@@ -2,7 +2,7 @@
 
 import Footer from "@/layout/footer";
 import Header from "@/layout/header";
-import Wrapper from "@/modules/common/components/wrapper";
+import Wrapper from "@/layout/components/wrapper";
 import React from "react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {

@@ -17,7 +17,8 @@ import { PlusIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import profileImg from "../../../assets/TPF.jpg";
 import OnAlert from "./on-alert";
-// import { AlertDialogTrigger, AlertDialog } from "../ui/alert-dialog";
+import { UserLink } from "./user-link";
+import { useRouter } from "next/navigation";
 
 const AdminAccess = () => {
   const [admin, setAdmin] = useState(true);
@@ -62,9 +63,11 @@ const AdminMenu = ({
   admin: boolean;
   signOut?: () => void;
 }) => {
+  const { push } = useRouter();
+
   return (
     <MenubarContent className='mt-1'>
-      <MenubarItem>
+      <MenubarItem onClick={() => push("/profile")}>
         {admin ? "Profile" : "Sign-in"}{" "}
         <MenubarShortcut>
           <AdminImage />

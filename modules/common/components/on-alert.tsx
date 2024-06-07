@@ -32,12 +32,12 @@ export default function OnAlert({
       <AlertDialogTrigger ref={triggerRef} className="hidden">Open</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>{title}</AlertDialogTitle>
-          <AlertDialogDescription>{description}</AlertDialogDescription>
+          <AlertDialogTitle className="font-normal">{title}</AlertDialogTitle>
+          <AlertDialogDescription >{description}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={stateHandler}>Continue</AlertDialogAction>
+          <AlertDialogCancel>No</AlertDialogCancel>
+          <AlertDialogAction onClick={stateHandler}>Yes</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
