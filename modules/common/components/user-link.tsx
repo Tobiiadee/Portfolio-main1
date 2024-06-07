@@ -10,7 +10,7 @@ type UserLinkProps = LinkProps & {
 
 export const UserLink = forwardRef<HTMLAnchorElement, UserLinkProps>(
   (props, ref) => {
-    return <Link ref={ref} {...props} />;
+    return <Link ref={ref} {...props} className="link-hover relative"/>;
   }
 );
 

@@ -29,7 +29,7 @@ const ToggleTheme = () => {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="center">
+      <DropdownMenuContent align="center" className="ml-4">
         <DropdownMenuItem onClick={() => setTheme("light")}>
           Light
         </DropdownMenuItem>
