@@ -7,9 +7,9 @@ const textVariants = cva("", {
   variants: {
     variant: {
       h1: "scroll-m-20 text-4xl font-extrabold lg:text-5xl font-serif",
-      h2: "scroll-m-20 text-2xl lg:text-3xl font-extrabold first:mt-0 font-serif",
-      h3: "scroll-m-20 text-xl font-bold font-serif",
-      h4: "scroll-m-20 text-xl font-medium font-serif tracking-normal",
+      h2: "scroll-m-20 text-2xl lg:text-3xl font-extrabold first:mt-0 font-sans",
+      h3: "scroll-m-20 text-xl font-bold font-sans",
+      h4: "scroll-m-20 text-2xl font-medium font-sans tracking-tight",
       h5: "scroll-m-20 font-normal font-sans text-base tracking-tight",
       p: "leading-7",
     },
