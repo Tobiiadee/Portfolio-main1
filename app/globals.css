@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   :root {
     --font-serif: "Playfair Display Variable", serif;
@@ -80,6 +84,10 @@
   }
 
   .link-hover {
-    @apply after:absolute after:left-0 after:bottom-0 after:block after:h-[2px] after:w-0 hover:after:w-full group-hover:after:w-full after:bg-primary/80 after:transition-all;
+    @apply after:absolute after:left-0 after:bottom-0 after:block after:h-[1px] after:w-0 hover:after:w-full group-hover:after:w-full after:bg-primary/80 after:transition-all;
+  }
+
+  .link-active {
+    @apply after:absolute after:left-0 after:bottom-0 after:block after:h-[1px] after:w-full after:bg-primary/80 after:transition-all;
   }
 }

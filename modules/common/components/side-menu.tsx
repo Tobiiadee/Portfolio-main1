@@ -28,7 +28,7 @@ export default function SideMenu() {
           <CloseSideMenu />
         </div>
         <div className='flex flex-col items-center gap-6'>
-          <SideMenuItem href='/work'>
+          <SideMenuItem href='/projects'>
             <Text variant={"h5"}>Work</Text>
           </SideMenuItem>
           <SideMenuItem href='/studio'>
