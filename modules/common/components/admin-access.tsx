@@ -13,7 +13,7 @@ import {
   MenubarShortcut,
   MenubarTrigger,
 } from "@/modules/common/ui/menubar";
-import { PlusIcon } from "@radix-ui/react-icons";
+import { PlusIcon, ReaderIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import profileImg from "../../../assets/TPF.jpg";
 import OnAlert from "./on-alert";
@@ -91,11 +91,22 @@ const AdminMenu = ({
 };
 
 const NoAccess = () => {
+  const { push } = useRouter();
+
   return (
     <MenubarContent className='mt-1'>
       <MenubarItem>Sign-in</MenubarItem>
       <MenubarSeparator />
-      <MenubarItem>Help</MenubarItem>
+      <MenubarItem onClick={() => push("/blog")}>Checkout our Blog</MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem onClick={() => push("/#feedback")}>
+        Drop a feedback
+        <MenubarShortcut>
+          <ReaderIcon />
+        </MenubarShortcut>
+      </MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem onClick={() => push("/help")}>Help</MenubarItem>
     </MenubarContent>
   );
 };

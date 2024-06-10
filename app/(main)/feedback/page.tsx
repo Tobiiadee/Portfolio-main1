@@ -2,6 +2,6 @@
 
 import React from "react";
 
-export default function Work() {
+export default function Feedback() {
   return <div></div>;
 }

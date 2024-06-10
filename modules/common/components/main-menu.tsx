@@ -11,7 +11,7 @@ export default function MainMenu() {
   return (
     <div className='hidden lg:flex gap-10 items-center'>
       <div className='flex gap-8 items-center'>
-        <UserLink href={"/work"}>
+        <UserLink href={"/projects"}>
           <Text variant={"h5"}>Work</Text>
         </UserLink>
 
