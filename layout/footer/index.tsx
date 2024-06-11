@@ -17,7 +17,7 @@ export default function Footer() {
 
         <div className='mt-10'>
           {" "}
-          <UserLink href={"/"}>
+          <UserLink href={"/contact"}>
             <Button>Get In Touch</Button>
           </UserLink>
         </div>

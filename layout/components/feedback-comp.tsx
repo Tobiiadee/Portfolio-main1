@@ -13,9 +13,9 @@ export default function FeedBackComp() {
           Thank you for visiting this portfolio! Your insights and feedback are
           incredibly valuable to us as we strive to improve and grow as
           professionals. By sharing your thoughts, you help us understand what
-          we sare doing well and where we can make improvements. Whether it's
-          about the design, content, functionality, or any other aspect of our
-          work, we would love to hear your opinions.
+          we sare doing well and where we can make improvements. Whether
+          it&rsquo;s about the design, content, functionality, or any other
+          aspect of our work, we would love to hear your opinions.
         </Text>
         <Text variant={"h5"}>
           Please take a moment to drop your feedback below. Your input will not

@@ -24,7 +24,7 @@ export default function Page() {
         handle. By collaborating closely with our clients, our team of experts
         ensures a deep understanding of their needs, delivering exceptional
         solutions. We are committed to crafting products that surpass our
-        clients' expectations.
+        clients&rsquo; expectations.
       </Text>
       <TechComp />
       <div className='mt-14 w-full md:w-4/6'>

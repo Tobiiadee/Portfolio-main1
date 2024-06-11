@@ -12,3 +12,18 @@ export const FeedBackSchema = z.object({
     .optional(),
   feedback: z.string().optional(),
 });
+
+export type ProjectType = {
+  title: string;
+  subTitle: string;
+  url: string;
+  firstDescription: string;
+  secondDescription: string;
+  imageUrl: string[];
+  industry: string;
+  services: string[];
+  client: string;
+  date: string;
+};
+
+

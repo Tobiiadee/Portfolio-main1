@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/modules/common/components/theme-provider";
 import '@fontsource-variable/playfair-display';
 import '@fontsource/open-sauce-sans';
 import "./globals.css";
+import { Toaster } from "@/modules/common/ui/sonner";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange>
           {children}
+          <Toaster/>
         </ThemeProvider>
       </body>
     </html>
