@@ -6,7 +6,7 @@ import { type VariantProps, cva } from "class-variance-authority";
 const textVariants = cva("", {
   variants: {
     variant: {
-      h1: "scroll-m-20 text-5xl font-extrabold lg:text-7xl font-sans",
+      h1: "scroll-m-20 text-3xl font-extrabold lg:text-5xl font-sans",
       h2: "scroll-m-20 text-2xl lg:text-3xl font-extrabold first:mt-0 font-sans",
       h3: "scroll-m-20 text-xl font-bold font-sans",
       h4: "scroll-m-20 text-lg lg:text-2xl font-medium font-sans tracking-tight",

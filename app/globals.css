@@ -90,4 +90,51 @@ html {
   .link-active {
     @apply after:absolute after:left-0 after:bottom-0 after:block after:h-[1px] after:w-full after:bg-primary/80 after:transition-all;
   }
+
+  .folder {
+    width: 150px;
+    height: 150px;
+    background-color: #f0c040;
+    position: relative;
+    border-radius: 10px 10px 10px 10px; /* Top rounded corners */
+    clip-path: polygon(
+      0% 20%,     /* Start of left tab */
+      10% 20%,    /* End of left tab */
+      12% 10%,    /* Start of top curve */
+      25% 10%,    /* End of top curve */
+      30% 0%,     /* Top left of the tab */
+      70% 0%,     /* Top right of the tab */
+      75% 10%,    /* Start of top right curve */
+      88% 10%,    /* End of top right curve */
+      90% 20%,    /* Start of right tab */
+      100% 20%,   /* End of right tab */
+      100% 100%,  /* Bottom right corner */
+      0% 100%     /* Bottom left corner */
+    );
+  }
+  
+  .folder::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background-color: inherit;
+    border-radius: 10px 10px 0 0; /* Top rounded corners for tab */
+    clip-path: polygon(
+      0% 100%,    /* Bottom left */
+      10% 100%,   /* Bottom of left tab */
+      12% 50%,    /* Start of top curve */
+      25% 50%,    /* End of top curve */
+      30% 0%,     /* Top left of the tab */
+      70% 0%,     /* Top right of the tab */
+      75% 50%,    /* Start of top right curve */
+      88% 50%,    /* End of top right curve */
+      90% 100%,   /* Bottom of right tab */
+      100% 100%   /* Bottom right */
+    );
+  }
+  
+  
 }
