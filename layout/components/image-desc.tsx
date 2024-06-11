@@ -13,7 +13,7 @@ import { UserLink } from "@/modules/common/components/user-link";
 import { Text } from "@/modules/common/components/text";
 import { OpenInNewWindowIcon } from "@radix-ui/react-icons";
 
-const imgArray: string[] = [img1, img2, img3, img4];
+const imgArray = [img1, img2, img3, img4];
 
 const ImageDesc = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
