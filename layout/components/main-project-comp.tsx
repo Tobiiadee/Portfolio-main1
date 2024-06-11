@@ -16,8 +16,8 @@ export default function MainProjectComp({ index }: { index: number }) {
         initial={{ x: 300, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.2 * (index + 1) }}
-        className='flex flex-col gap-4 w-max group'>
-        <div className='relative flex items-center justify-center  border border-dotted rounded-xl w-[20rem] h-[18rem] md:w-[20rem] md:h-[15rem] transition duration-300 cursor-pointer overflow-hidden'>
+        className='flex flex-col gap-4 w-max group px-2 py-1'>
+        <div className='relative flex items-center justify-center border border-dotted rounded-xl w-full h-[18rem] md:w-[20rem] md:h-[15rem] transition duration-300 cursor-pointer overflow-hidden'>
           <Image
             src={img}
             alt='project thumbnail'

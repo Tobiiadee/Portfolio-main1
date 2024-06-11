@@ -19,7 +19,7 @@ export type ProjectType = {
   url: string;
   firstDescription: string;
   secondDescription: string;
-  imageUrl: string[];
+  thumbnailUrl: string[];
   industry: string;
   services: string[];
   client: string;

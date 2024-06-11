@@ -17,7 +17,7 @@ export default function OngoingProjectComp() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7 }}
           className='flex gap-4 items-center justify-end w-full'>
-          <Separator className='w-32' />
+          <Separator className='w-24 md:w-32' />
           <Text variant={"h4"} className='text-gray-500 font-semibold'>
             Ongoing Projects
           </Text>
