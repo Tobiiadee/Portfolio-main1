@@ -12,7 +12,7 @@ const TitleDescription = () => {
       initial={{ x: -100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{duration: 0.7}}
-      className='flex flex-col gap-8 lg:gap-10 lg:w-[45rem] mt-20'>
+      className='flex flex-col gap-8 lg:gap-10 w-full lg:w-[45rem] mt-10 md:mt-20'>
       <Text variant={"h4"}>
         We specialize in crafting exceptional digital experiences to help our
         clients achieve their business goals.

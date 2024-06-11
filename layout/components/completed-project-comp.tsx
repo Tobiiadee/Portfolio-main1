@@ -9,7 +9,7 @@ export default function CompletedProjectComp() {
   return (
     <div className='flex flex-col gap-8'>
       <div className='flex gap-4 items-center justify-end w-full'>
-        <Separator className='w-32' />
+        <Separator className='w-24 md:w-32' />
         <Text variant={"h4"} className='text-gray-500 font-semibold'>
           Completed Projects
         </Text>

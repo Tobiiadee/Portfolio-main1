@@ -11,7 +11,7 @@ import TechComp from "@/layout/components/tech-comp";
 
 export default function Page() {
   return (
-    <div className='grid gap-16 md:gap-0 mt-10'>
+    <div className='grid gap-16 md:gap-0 md:mt-10'>
       <div className='flex flex-col gap-14 lg:flex-row lg:h-screen lg:justify-between overflow-hidden'>
         <TitleDescription />
         <div className='border border-dotted lg:hidden'></div>
