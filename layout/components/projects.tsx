@@ -19,7 +19,7 @@ export default function Projects() {
               Projects
             </Text>
             <Text variant={"p"} className='text-blue-500'>
-              Ongoing Projects
+              Completed Projects
             </Text>
           </div>
         </div>

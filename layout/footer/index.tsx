@@ -2,8 +2,8 @@
 
 import React from "react";
 import { Text } from "@/modules/common/components/text";
-import { UserLink } from "@/modules/common/components/user-link";
 import { Button } from "@/modules/common/ui/button";
+import Link from "next/link";
 import FooterComp from "../components/footer-comp";
 
 export default function Footer() {
@@ -17,9 +17,9 @@ export default function Footer() {
 
         <div className='mt-10'>
           {" "}
-          <UserLink href={"/contact"}>
+          <Link href={"/contact"}>
             <Button>Get In Touch</Button>
-          </UserLink>
+          </Link>
         </div>
       </div>
 

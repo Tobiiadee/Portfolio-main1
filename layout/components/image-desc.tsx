@@ -31,7 +31,7 @@ const ImageDesc = () => {
       initial={{ x: 100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.7 }}
-      className='relative self-center md:self-start w-full h-[24rem] shadow-md rounded-md flex items-center lg:items-start overflow-hidden'>
+      className='relative self-center md:self-start w-full md:w-[21rem] h-[24rem] shadow-md rounded-md flex items-center lg:items-start overflow-hidden'>
       <AnimatePresence initial={false}>
         <motion.div
           key={currentIndex}
