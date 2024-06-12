@@ -4,8 +4,8 @@
 
 import React from "react";
 import { Text } from "@/modules/common/components/text";
-import { DotFilledIcon } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
+import BulletText from "@/modules/common/components/bullet-text";
 
 export default function About() {
   return (
@@ -108,11 +108,4 @@ export default function About() {
   );
 }
 
-export const BulletText = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div className='flex gap-4 items-center'>
-      <DotFilledIcon />
-      <Text variant={"h5"}>{children}</Text>
-    </div>
-  );
-};
+
