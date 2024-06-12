@@ -13,6 +13,13 @@ export const FeedBackSchema = z.object({
   feedback: z.string().optional(),
 });
 
+export const SignInSchema = z.object({
+  email: z.string().min(1, { message: "Enter a valid email address" }).email(),
+  password: z
+    .string()
+    .min(8, { message: "Password must be at least 8 characters" }),
+});
+
 export type ProjectType = {
   title: string;
   subTitle: string;
@@ -25,5 +32,3 @@ export type ProjectType = {
   client: string;
   date: string;
 };
-
-

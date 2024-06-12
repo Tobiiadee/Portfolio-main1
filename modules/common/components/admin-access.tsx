@@ -21,7 +21,7 @@ import { UserLink } from "./user-link";
 import { useRouter } from "next/navigation";
 
 const AdminAccess = () => {
-  const [admin, setAdmin] = useState(true);
+  const [admin, setAdmin] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
   const resetAdmin = () => {
@@ -95,7 +95,7 @@ const NoAccess = () => {
 
   return (
     <MenubarContent className='mt-1'>
-      <MenubarItem>Sign-in</MenubarItem>
+      <MenubarItem onClick={() => push("/sign-in")}>Sign-in</MenubarItem>
       <MenubarSeparator />
       <MenubarItem onClick={() => push("/blog")}>Checkout our Blog</MenubarItem>
       <MenubarSeparator />
