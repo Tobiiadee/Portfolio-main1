@@ -54,7 +54,7 @@ export default function About() {
 
         <div className='flex flex-col gap-4 md:grid grid-cols-2 md:gap-6'>
           <Text variant={"h4"} className='uppercase'>
-            Tech Stark
+            Tech Stack
           </Text>
           <div className='flex flex-col gap-4'>
             <Text variant={"h5"}>
@@ -107,5 +107,3 @@ export default function About() {
     </div>
   );
 }
-
-
