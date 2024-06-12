@@ -16,8 +16,8 @@ export default function FooterComp() {
           <UserLink href={"/projects"}>
             <Text variant={"h5"}>Work</Text>
           </UserLink>
-          <UserLink href={"/studio"}>
-            <Text variant={"h5"}>Studio</Text>
+          <UserLink href={"/about"}>
+            <Text variant={"h5"}>About</Text>
           </UserLink>
           <UserLink href={"/contact"}>
             <Text variant={"h5"}>Contact</Text>

@@ -31,8 +31,8 @@ export default function SideMenu() {
           <SideMenuItem href='/projects'>
             <Text variant={"h5"}>Work</Text>
           </SideMenuItem>
-          <SideMenuItem href='/studio'>
-            <Text variant={"h5"}>Studio</Text>
+          <SideMenuItem href='/about'>
+            <Text variant={"h5"}>About</Text>
           </SideMenuItem>
           <SideMenuItem href='/contact'>
             <Text variant={"h5"}>Contact</Text>

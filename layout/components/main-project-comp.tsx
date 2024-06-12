@@ -29,7 +29,7 @@ export default function MainProjectComp({ index }: { index: number }) {
             <ArrowRightIcon className='text-background w-5 h-5' />
           </div>
         </div>
-        <div className='group-hover:text-foreground text-gray-600 flex gap-2 items-center transition duration-300'>
+        <div className='group-hover:text-foreground text-gray-600 flex gap-2 items-center transition duration-300 ml-2 md:ml-0'>
           <Text variant={"p"} className='text-start'>
             Project title
           </Text>
