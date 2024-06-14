@@ -69,7 +69,7 @@ export default function SignInComp() {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.2 }}
           className='w-max h-max'>
-          <Card className='w-full md:w-[27rem] mx-auto px-8 pt-2 pb-6'>
+          <Card className='w-full md:w-[27rem] border-none shadow-none md:shadow-md md:border-2 mx-auto px-8 pt-2 pb-6'>
             <CardHeader>
               <CardTitle className='text-center'>Welcome Back</CardTitle>
               <CardDescription className='text-center'>
@@ -101,7 +101,7 @@ export default function SignInComp() {
                       <FormItem>
                         <FormLabel>Password</FormLabel>
                         <FormControl>
-                          <Input placeholder='Password' {...field} />
+                          <Input placeholder='Password' type="password" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

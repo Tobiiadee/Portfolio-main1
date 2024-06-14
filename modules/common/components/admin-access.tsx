@@ -15,13 +15,13 @@ import {
 } from "@/modules/common/ui/menubar";
 import { PlusIcon, ReaderIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
-import profileImg from "../../../assets/TPF.jpg";
+import profileImg from "../../../public/images/TPF.jpg";
 import OnAlert from "./on-alert";
 import { UserLink } from "./user-link";
 import { useRouter } from "next/navigation";
 
 const AdminAccess = () => {
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(true);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
   const resetAdmin = () => {
@@ -35,7 +35,7 @@ const AdminAccess = () => {
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger className='px-8 rounded-md bg-white text-black lg:px-4 transition duration-300'>
-            Admin
+            {admin ? "Admin" : "Client"}
           </MenubarTrigger>
           {admin ? (
             <AdminMenu admin={admin} signOut={resetAdmin} />
@@ -74,7 +74,7 @@ const AdminMenu = ({
         </MenubarShortcut>
       </MenubarItem>
       <MenubarSeparator />
-      <MenubarItem>
+      <MenubarItem onClick={() => push("/profile/add-project")}>
         Add Project
         <MenubarShortcut>
           <PlusIcon />

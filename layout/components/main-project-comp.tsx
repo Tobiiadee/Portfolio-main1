@@ -6,7 +6,7 @@ import { Text } from "@/modules/common/components/text";
 import { motion } from "framer-motion";
 import { ArrowRightIcon, OpenInNewWindowIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
-import img from "../../assets/TPF.jpg";
+import img from "../../public/images/TPF.jpg";
 import Link from "next/link";
 
 export default function MainProjectComp({ index }: { index: number }) {
