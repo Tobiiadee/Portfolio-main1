@@ -30,7 +30,6 @@ export default function RootLayout({
           disableTransitionOnChange>
           {children}
           <Toaster />
-          <div id='portal-root'></div> {/* Portal root div */}
         </ThemeProvider>
       </body>
     </html>

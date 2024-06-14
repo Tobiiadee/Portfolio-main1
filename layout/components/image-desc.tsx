@@ -5,10 +5,10 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import img1 from "../../assets/aiony-haust-3TLl_97HNJo-unsplash.jpg";
-import img2 from "../../assets/jake-nackos-IF9TK5Uy-KI-unsplash.jpg";
-import img3 from "../../assets/albert-dera-ILip77SbmOE-unsplash.jpg";
-import img4 from "../../assets/charlesdeluvio-kVg2DQTAK7c-unsplash.jpg";
+import img1 from "../../public/images/aiony-haust-3TLl_97HNJo-unsplash.jpg";
+import img2 from "../../public/images/jake-nackos-IF9TK5Uy-KI-unsplash.jpg";
+import img3 from "../../public/images/albert-dera-ILip77SbmOE-unsplash.jpg";
+import img4 from "../../public/images/charlesdeluvio-kVg2DQTAK7c-unsplash.jpg";
 import { UserLink } from "@/modules/common/components/user-link";
 import { Text } from "@/modules/common/components/text";
 import { OpenInNewWindowIcon } from "@radix-ui/react-icons";
