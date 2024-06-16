@@ -242,7 +242,7 @@ export default function AddProjectComp() {
           <div className=''>
             <FormField
               control={form.control}
-              name='firstDescription'
+              name='description'
               render={({ field }) => (
                 <FormItem className='w-full'>
                   <FormLabel className='font-semibold'>Description</FormLabel>
