@@ -5,6 +5,7 @@ import { Text } from "@/modules/common/components/text";
 import { Button } from "@/modules/common/ui/button";
 import Link from "next/link";
 import FooterComp from "../components/footer-comp";
+import { SocialContact } from "../components/contact-comp";
 
 export default function Footer() {
   return (
@@ -23,8 +24,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className='w-full'>
-        <FooterComp />
+      <div className='self-center w-full'>
+        <SocialContact />
       </div>
     </div>
   );
