@@ -1,0 +1,39 @@
+[
+  {
+    "projects": {
+      "completed-projects": [
+        {
+          "title": "",
+          "subTitle": "",
+          "url": "",
+          "description": "",
+          "thumbnailUrl": [""],
+          "industry": "",
+          "services": [""],
+          "client": "",
+          "date": ""
+        }
+      ],
+      "ongoing-projects": [
+        {
+          "title": "",
+          "subTitle": "",
+          "url": "",
+          "description": "",
+          "thumbnailUrl": [""],
+          "industry": "",
+          "services": [""],
+          "client": "",
+          "date": ""
+        }
+      ]
+    },
+
+    "feedbacks": [
+      {
+        "email": "",
+        "feedback": ""
+      }
+    ]
+  }
+]

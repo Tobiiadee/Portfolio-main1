@@ -21,27 +21,39 @@ export const SignInSchema = z.object({
 });
 
 export const ProjectSchema = z.object({
-  title: z.string().min(1, {message: "What is your project title?"}),
+  title: z.string().min(1, { message: "What is your project title?" }),
   subTitle: z.string(),
   url: z.string().url(),
-  firstDescription: z.string().min(20, {message: "Give a better description for your project."}),
-  secondDescription: z.string(),
+  description: z
+    .string()
+    .min(20, { message: "Give a better description for your project." }),
   thumbnailUrl: z.array(z.string()),
-  industry: z.string().min(1, {message: "What industry?"}),
+  industry: z.string().min(1, { message: "What industry?" }),
   services: z.array(z.string()),
-  client: z.string().min(1, {message: "Who are your clients?"}),
-  date: z.date(),
+  client: z.string().min(1, { message: "Who are your clients?" }),
+  date: z.date({message: "You left out the date input."}),
 });
 
-export type ProjectType = {
+export const ContactSchema = z.object({
+  name: z.string().min(1, { message: "Enter your name" }),
+  email: z
+    .string()
+    .email({message: "Enter a valid email address"}),
+  message: z.string().min(1, { message: "What's your message?" }),
+});
+
+export interface project {
   title: string;
   subTitle: string;
   url: string;
-  firstDescription: string;
-  secondDescription: string;
+  description: string;
   thumbnailUrl: string[];
   industry: string;
   services: string[];
   client: string;
   date: string;
-};
+}
+
+export interface ProjectsData {
+  [key: string]: project;
+}

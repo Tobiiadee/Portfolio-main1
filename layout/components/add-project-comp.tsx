@@ -37,8 +37,7 @@ let initialValue = {
   title: "",
   subTitle: "",
   url: "",
-  firstDescription: "",
-  secondDescription: "",
+  description: "",
   thumbnailUrl: [""],
   industry: "",
   client: "",
@@ -71,7 +70,6 @@ export default function AddProjectComp() {
     resolver: zodResolver(ProjectSchema),
     defaultValues: initialValue,
   });
-
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof ProjectSchema>) {
