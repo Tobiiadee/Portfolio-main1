@@ -11,7 +11,7 @@ import "@fontsource/open-sauce-sans";
 import "./globals.css";
 import { Toaster } from "@/modules/common/ui/sonner";
 import SessionProvider from "@/modules/common/components/session-provider";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/utils/auth-options";
 import { getServerSession } from "next-auth";
 
 // const inter = Inter({ subsets: ["latin"] });
