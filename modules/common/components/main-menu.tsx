@@ -3,9 +3,9 @@
 import React from "react";
 import { UserLink } from "./user-link";
 import { Text } from "./text";
-import { Separator } from "@/modules/common/ui/separator";
 import ToggleTheme from "@/layout/components/toggleTheme";
 import AdminAccess from "@/modules/common/components/admin-access";
+import { AuthSessionType } from "@/modules/common/components/admin-access";
 
 export default function MainMenu() {
   return (

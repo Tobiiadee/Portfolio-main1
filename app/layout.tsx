@@ -6,29 +6,36 @@ import "@fontsource-variable/playfair-display";
 import "@fontsource/open-sauce-sans";
 import "./globals.css";
 import { Toaster } from "@/modules/common/ui/sonner";
+import SessionProvider from "@/modules/common/components/session-provider";
+import { authOptions } from "./api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
 
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "tobi.wdev",
-  description: "frontend web development portfolio",
+  title: "Tobi Ade | personal portfolio",
+  description: "tobi is a frontend web developer willing to offer the best services",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession(authOptions);
+
   return (
     <html lang='en'>
-      <head />
+     <head/>
       <body>
         <ThemeProvider
           attribute='class'
           defaultTheme='light'
           enableSystem
           disableTransitionOnChange>
-          {children}
+          <SessionProvider session={session}>
+            <div>{children}</div>
+          </SessionProvider>
           <Toaster />
         </ThemeProvider>
       </body>

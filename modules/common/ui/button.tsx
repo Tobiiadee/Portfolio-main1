@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import { LoaderCircle } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -64,7 +65,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         disabled={isLoading || disabled}
         {...props}>
-        {/* {isLoading && <LoaderCircle size={16} className='animate-spin mr-2' />} */}
+        {isLoading && <LoaderCircle size={16} className='animate-spin mr-2' />}
         {children}
       </Comp>
     );

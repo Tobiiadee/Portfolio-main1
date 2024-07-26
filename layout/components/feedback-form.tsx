@@ -20,10 +20,24 @@ import {
   FormMessage,
 } from "@/modules/common/ui/form";
 import { Textarea } from "@/modules/common/ui/textarea";
+import useSendFirebaseProject from "@/hooks/use-sendFirebaseData";
+import { generatePath } from "@/lib/helpers/helpers";
+import { toast } from "sonner";
+import { ContactFormRequest } from "@/app/api/sendMail/route";
+import useSendEmail from "@/hooks/use-sendEmail";
 
 type FeedbackFormType = z.infer<typeof FeedBackSchema>;
 
+const { generatedPath, uID } = generatePath("feedbacks");
+
 export function FeedBackForm() {
+  //Send feedbacks to database
+  const { sendData, error, loading, onSuccess } =
+    useSendFirebaseProject(generatedPath);
+
+  //Send Email data
+  const { sendMail } = useSendEmail();
+
   // 1. Define your form.
   const form = useForm<FeedbackFormType>({
     resolver: zodResolver(FeedBackSchema),
@@ -34,11 +48,34 @@ export function FeedBackForm() {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof FeedBackSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof FeedBackSchema>) {
+    const feedbackData = {
+      id: uID,
+      email: values.email,
+      message: values.feedback,
+    };
+
+    const emailData: ContactFormRequest = {
+      address: values.email,
+      message: values.feedback,
+      feedback: true,
+    };
+    sendData(feedbackData);
+    sendMail(emailData);
+    setTimeout(() => {
+      form.reset();
+    }, 2000);
   }
+
+  if (onSuccess) {
+    toast.success("Thank you for your feedback!");
+  }
+
+  if (error) {
+    toast.error("There was an error sending your feedback");
+  }
+
+  const { isValid } = form.formState;
 
   return (
     <Form {...form}>
@@ -65,13 +102,19 @@ export function FeedBackForm() {
                 What do you think?
               </FormLabel>
               <FormControl>
-                <Textarea placeholder='What do you think?' {...field} className="min-h-[10rem] max-h-[10rem]"/>
+                <Textarea
+                  placeholder='What do you think?'
+                  {...field}
+                  className='min-h-[10rem] max-h-[10rem]'
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type='submit'>Submit</Button>
+        <Button type='submit' disabled={!isValid} isLoading={loading}>
+          Send Feedback
+        </Button>
       </form>
     </Form>
   );

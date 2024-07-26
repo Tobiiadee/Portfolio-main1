@@ -13,27 +13,30 @@ import {
   AlertDialogTrigger,
 } from "@/modules/common/ui/alert-dialog";
 
+import { signOut } from "next-auth/react";
+
 export default function OnAlert({
   title,
   description,
   triggerRef,
-  setState
 }: {
   title: string;
   description?: string;
-  triggerRef?: React.RefObject<HTMLButtonElement>,
-  setState: (state: boolean) => void
+  triggerRef?: React.RefObject<HTMLButtonElement>;
 }) {
-
-    const stateHandler = () => setState(false);
+  const stateHandler = () => {
+    signOut();
+  };
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger ref={triggerRef} className="hidden">Open</AlertDialogTrigger>
+      <AlertDialogTrigger ref={triggerRef} className='hidden'>
+        Open
+      </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle className="font-normal">{title}</AlertDialogTitle>
-          <AlertDialogDescription >{description}</AlertDialogDescription>
+          <AlertDialogTitle className='font-normal'>{title}</AlertDialogTitle>
+          <AlertDialogDescription>{description}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>No</AlertDialogCancel>

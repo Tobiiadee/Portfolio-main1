@@ -6,7 +6,7 @@ import { Text } from "@/modules/common/components/text";
 
 export default function FeedBackComp() {
   return (
-    <div className='grid gap-8' id='feedback'>
+    <div className='grid gap-8' >
       <div className='flex flex-col gap-4'>
         <Text variant={"h3"}>We Value Your Feedback!</Text>
         <Text variant={"h5"}>

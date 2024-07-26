@@ -5,16 +5,12 @@
 import { z } from "zod";
 
 export const FeedBackSchema = z.object({
-  email: z
-    .string()
-    .min(1, { message: "Enter a valid email address" })
-    .email()
-    .optional(),
-  feedback: z.string().optional(),
+  email: z.string().email({ message: "Enter a valid email address" }),
+  feedback: z.string().min(2, { message: "You have not enter your feedback" }),
 });
 
 export const SignInSchema = z.object({
-  email: z.string().min(1, { message: "Enter a valid email address" }).email(),
+  email: z.string().email({ message: "Enter a valid email address" }),
   password: z
     .string()
     .min(8, { message: "Password must be at least 8 characters" }),
@@ -27,19 +23,28 @@ export const ProjectSchema = z.object({
   description: z
     .string()
     .min(20, { message: "Give a better description for your project." }),
-  thumbnailUrl: z.array(z.string()),
   industry: z.string().min(1, { message: "What industry?" }),
   services: z.array(z.string()),
   client: z.string().min(1, { message: "Who are your clients?" }),
-  date: z.date({message: "You left out the date input."}),
+  stage: z.enum(["completed", "ongoing"]),
+  date: z.date({ message: "You left out the date input." }),
 });
 
 export const ContactSchema = z.object({
-  name: z.string().min(1, { message: "Enter your name" }),
-  email: z
+  name: z.string(),
+  email: z.string().email({ message: "Enter a valid email address" }),
+  message: z
     .string()
-    .email({message: "Enter a valid email address"}),
-  message: z.string().min(1, { message: "What's your message?" }),
+    .min(1, {
+      message:
+        "To provide you with the best possible service and create a tailored solution that meets your unique needs, I need to understand the specifics of your project.",
+    }),
+});
+
+export const SendContactRequestSchema = z.object({
+  email: z.string().email(),
+  subject: z.string(),
+  message: z.string().min(1, { message: "Ths field is required" }),
 });
 
 export interface project {
@@ -47,13 +52,34 @@ export interface project {
   subTitle: string;
   url: string;
   description: string;
-  thumbnailUrl: string[];
+  thumbnailUrl: string;
   industry: string;
   services: string[];
   client: string;
   date: string;
 }
+export interface ProjectReturn {
+  title: string;
+  subTitle: string;
+  url: string;
+  description: string;
+  thumbnailUrl: string;
+  industry: string;
+  stage: string;
+  services: string[];
+  client: string;
+  date: string;
+  id: string;
+}
+
+export interface ProjectReturnType {
+  [key: string]: ProjectReturnType;
+}
 
 export interface ProjectsData {
   [key: string]: project;
+}
+
+export interface DynamicObject {
+  [key: string]: any; // This allows the object to have any number of properties with any type
 }

@@ -8,10 +8,11 @@ import Projects from "@/layout/components/projects";
 import { Text } from "@/modules/common/components/text";
 import FeedBackComp from "@/layout/components/feedback-comp";
 import TechComp from "@/layout/components/tech-comp";
+import { TestimonialButton } from "@/layout/components/about-comp";
 
 export default function Page() {
   return (
-    <div className='grid gap-16 md:gap-0 md:mt-10'>
+    <div className='relative grid gap-16 md:gap-0 md:mt-10'>
       <div className='flex flex-col gap-14 lg:flex-row lg:h-screen lg:justify-between overflow-hidden'>
         <TitleDescription />
         <div className='border border-dotted lg:hidden'></div>
@@ -27,8 +28,12 @@ export default function Page() {
         clients&rsquo; expectations.
       </Text>
       <TechComp />
-      <div className='mt-14 w-full md:w-4/6'>
+      <div id='feedback' className='mt-14 w-full md:w-4/6'>
         <FeedBackComp />
+      </div>
+
+      <div className="fixed right-6 bottom-8 hidden md:block">
+        <TestimonialButton className="py-6"/>
       </div>
     </div>
   );

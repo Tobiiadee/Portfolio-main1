@@ -7,7 +7,7 @@ import { PlusIcon } from "@radix-ui/react-icons";
 // const dummyImg: string = "/public/images/Dummy_flag.svg.png";
 
 type AddImageType = {
-  projectThumbnail: string;
+  projectThumbnail: string | ArrayBuffer | null;
   imageUploadHandler: (
     e: React.ChangeEvent<HTMLInputElement>,
     imageKey: "image1" | "image2"

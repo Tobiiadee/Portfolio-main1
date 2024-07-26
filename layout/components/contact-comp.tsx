@@ -21,6 +21,13 @@ import { toast } from "sonner";
 import { Button } from "@/modules/common/ui/button";
 import { copyTextToClipboard } from "@/lib/helpers/copy-to-clipboard";
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../../modules/common/ui/tooltip";
+
 export default function ContactComp() {
   return (
     <div className='grid md:grid-cols-5 gap-10'>
@@ -95,19 +102,19 @@ const ContactBullet = ({ text }: { text: string }) => {
 export const SocialContact = () => {
   return (
     <div className='flex items-center gap-4'>
-      <Link href={""}>
+      <Link target="blank" href={"https://x.com/TobiWdev"}>
         <div className='border rounded-md flex items-center justify-center p-2 group'>
           <TwitterLogoIcon className='w-6 h-5 group-hover:scale-110 transition duration-300' />
         </div>
       </Link>
 
-      <Link href={""}>
+      <Link target="blank" href={""}>
         <div className='border rounded-md flex items-center justify-center p-2 group'>
           <GitHubLogoIcon className='w-6 h-5 group-hover:scale-110 transition duration-300' />
         </div>
       </Link>
 
-      <Link href={""}>
+      <Link target="blank" href={""}>
         <div className='border rounded-md flex items-center justify-center p-2 group'>
           <LinkedInLogoIcon className='w-6 h-5 group-hover:scale-110 transition duration-300' />
         </div>
@@ -117,15 +124,12 @@ export const SocialContact = () => {
 };
 
 const ContactCards = () => {
-  const onCopy = (
-    e: React.MouseEvent<HTMLButtonElement>,
-    copiedText: string
-  ) => {
+  const onCopy = (e: React.MouseEvent<HTMLDivElement>, copiedText: string) => {
     const copiedTextType = e.currentTarget.textContent;
     if (copiedText) {
-      toast(`${copiedTextType} Copied To Clipboard`);
+      toast.success(`${copiedTextType} Copied To Clipboard`);
     } else {
-      toast(`Faild to copy text to clipboard`);
+      toast.error(`Faild to copy text to clipboard`);
     }
 
     copyTextToClipboard(copiedText);
@@ -139,13 +143,21 @@ const ContactCards = () => {
             <EnvelopeClosedIcon className='w-4 h-4 group-hover:scale-110 transition duration-300' />
           </div>
 
-          <Button
-            variant={"ghost"}
-            onClick={(e) => onCopy(e, "tobi.wdev@gmail.com")}
-            className='group cursor-pointer'>
-            <p className='hidden'>Email</p>
-            <ClipboardCopyIcon className='group-hover:scale-110 transition duration-300' />
-          </Button>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger className='hover:bg-accent hover:text-accent-foreground'>
+                <div
+                  onClick={(e) => onCopy(e, "tobi.wdev@gmail.com")}
+                  className='group cursor-pointer'>
+                  <p className='hidden'>Email</p>
+                  <ClipboardCopyIcon className='group-hover:scale-110 transition duration-300' />
+                </div>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Copy Email</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
         <div className='flex flex-col gap-0.5'>
           {" "}
@@ -162,13 +174,21 @@ const ContactCards = () => {
             <MobileIcon className='w-4 h-4 group-hover:scale-110 transition duration-300' />
           </div>
 
-          <Button
-            variant={"ghost"}
-            onClick={(e) => onCopy(e, "(+234) 08034685185")}
-            className='group cursor-pointer'>
-            <p className='hidden'>Phone Number</p>
-            <ClipboardCopyIcon className='group-hover:scale-110 transition duration-300' />
-          </Button>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger className='hover:bg-accent hover:text-accent-foreground'>
+                <div
+                  onClick={(e) => onCopy(e, "(+234) 08034685185")}
+                  className='group cursor-pointer'>
+                  <p className='hidden'>Phone Number</p>
+                  <ClipboardCopyIcon className='group-hover:scale-110 transition duration-300' />
+                </div>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Copy Phone Number</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
         <div className='flex flex-col gap-0.5'>
           <Text variant={"h5"}>Call us</Text>

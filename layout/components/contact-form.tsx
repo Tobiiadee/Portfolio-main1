@@ -19,10 +19,30 @@ import {
   FormMessage,
 } from "@/modules/common/ui/form";
 import { Textarea } from "@/modules/common/ui/textarea";
+import useSendFirebaseProject from "@/hooks/use-sendFirebaseData";
+import { generatePath } from "@/lib/helpers/helpers";
+import { toast } from "sonner";
+import useSendEmail from "@/hooks/use-sendEmail";
+import { useRouter } from "next/navigation";
+import { ContactFormRequest } from "@/app/api/sendMail/route";
 
 type ContactFormType = z.infer<typeof ContactSchema>;
 
+const { generatedPath, uID } = generatePath("contacts");
+
 export function ContactForm() {
+  const { push } = useRouter();
+  //Send data to firebase
+  const { sendData, onSuccess, error, loading } =
+    useSendFirebaseProject(generatedPath);
+
+  //Send Email data
+  const {
+    sendMail,
+    onSuccess: emailSuccess,
+    loading: emailLoading,
+  } = useSendEmail();
+
   // 1. Define your form.
   const form = useForm<ContactFormType>({
     resolver: zodResolver(ContactSchema),
@@ -34,11 +54,36 @@ export function ContactForm() {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof ContactSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof ContactSchema>) {
+    const formData = {
+      id: uID,
+      status: "pending",
+      name: values.name,
+      email: values.email,
+      message: values.message,
+    };
+
+    const emailData: ContactFormRequest = {
+      address: values.email.trim(),
+      name: values.name.trim(),
+      message: values.message.trim(),
+    };
+
+    form.reset();
+    sendMail(emailData);
+    sendData(formData);
   }
+
+  if (onSuccess) {
+    toast.success("Thank you for reaching out to us");
+    push("/");
+  }
+
+  if (error) {
+    toast.error("There was an error sending your request");
+  }
+
+  const { isValid } = form.formState;
 
   return (
     <Form {...form}>
@@ -48,7 +93,7 @@ export function ContactForm() {
             control={form.control}
             name='name'
             render={({ field }) => (
-              <FormItem className="w-full">
+              <FormItem className='w-full'>
                 <FormLabel className='font-semibold'>Name</FormLabel>
                 <FormControl>
                   <Input
@@ -66,8 +111,10 @@ export function ContactForm() {
             control={form.control}
             name='email'
             render={({ field }) => (
-              <FormItem className="w-full">
-                <FormLabel className='font-semibold'>Email</FormLabel>
+              <FormItem className='w-full'>
+                <FormLabel className='font-semibold'>
+                  Email (Required)
+                </FormLabel>
                 <FormControl>
                   <Input
                     placeholder='Enter your email'
@@ -86,10 +133,12 @@ export function ContactForm() {
           name='message'
           render={({ field }) => (
             <FormItem>
-              <FormLabel className='font-semibold'>How can we help?</FormLabel>
+              <FormLabel className='font-semibold'>
+                Tell us a little about your project... (Required)
+              </FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder='How can we help?'
+                  placeholder='Tell us a little about your project...'
                   {...field}
                   className='min-h-[10rem] max-h-[10rem]'
                 />
@@ -98,7 +147,12 @@ export function ContactForm() {
             </FormItem>
           )}
         />
-        <Button type='submit'>Submit</Button>
+        <Button
+          isLoading={emailLoading && loading}
+          disabled={!isValid}
+          type='submit'>
+          React Out
+        </Button>
       </form>
     </Form>
   );

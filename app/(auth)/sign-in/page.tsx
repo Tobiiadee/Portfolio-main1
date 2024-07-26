@@ -1,8 +1,13 @@
 /** @format */
 
+import { Metadata } from "next";
 import SignInComp from "@/layout/components/sign-in-comp";
-import Modal from "@/modules/common/components/modal";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Login - tobi.wdev",
+  description: "Login to your account to access your dashboard.",
+};
 
 const SignIn = () => {
   return (

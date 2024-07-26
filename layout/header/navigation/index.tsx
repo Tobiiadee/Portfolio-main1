@@ -6,7 +6,7 @@ import SideMenu from "@/modules/common/components/side-menu";
 
 export default function Navigation() {
   return (
-    <nav className="relative">
+    <nav className='relative'>
       <MainMenu />
       <div className='lg:hidden'>
         <SideMenu />

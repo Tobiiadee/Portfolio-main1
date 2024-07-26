@@ -13,6 +13,7 @@ import SideMenuItem, { CloseSideMenu } from "./side-menu-item";
 import { Text } from "./text";
 import ToggleTheme from "@/layout/components/toggleTheme";
 import AdminAccess from "./admin-access";
+import { AuthSessionType } from "./admin-access";
 
 export default function SideMenu() {
   return (

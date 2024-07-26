@@ -91,44 +91,160 @@ html {
     @apply after:absolute after:left-0 after:bottom-0 after:block after:h-[1px] after:w-full after:bg-primary/80 after:transition-all;
   }
 
-  /* .text {
-    background: rgb(0, 0, 255);
-  } */
+  .loader {
+    @apply w-10 aspect-square;
+    --c: linear-gradient(currentColor 0 0);
+    --r1: radial-gradient(farthest-side at bottom, currentColor 93%, #0000);
+    --r2: radial-gradient(farthest-side at top, currentColor 93%, #0000);
+    background: var(--c), var(--r1), var(--r2), var(--c), var(--r1), var(--r2),
+      var(--c), var(--r1), var(--r2);
+    background-repeat: no-repeat;
+    animation: l2 1s infinite alternate;
+  }
+  @keyframes l2 {
+    0%,
+    25% {
+      background-size: 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px, 8px 0,
+        8px 4px, 8px 4px;
+      background-position: 0 50%, 0 calc(50% - 2px), 0 calc(50% + 2px), 50% 50%,
+        50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px),
+        100% calc(50% + 2px);
+    }
+    50% {
+      background-size: 8px 100%, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px,
+        8px 0, 8px 4px, 8px 4px;
+      background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%,
+        50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px),
+        100% calc(50% + 2px);
+    }
+    75% {
+      background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px,
+        8px 0, 8px 4px, 8px 4px;
+      background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%,
+        50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(50% - 2px),
+        100% calc(50% + 2px);
+    }
+    95%,
+    100% {
+      background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px,
+        8px 100%, 8px 4px, 8px 4px;
+      background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%,
+        50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(0% - 2px),
+        100% calc(100% + 2px);
+    }
+  }
 
   /* HTML: <div class="loader"></div> */
-.loader {
-  width: 40px;
-  aspect-ratio: 1;
-  --c: linear-gradient(#000 0 0);
-  --r1: radial-gradient(farthest-side at bottom,#000 93%,#0000);
-  --r2: radial-gradient(farthest-side at top   ,#000 93%,#0000);
-  background: 
-    var(--c) ,var(--r1),var(--r2),
-    var(--c) ,var(--r1),var(--r2),
-    var(--c) ,var(--r1),var(--r2);
-  background-repeat: no-repeat;
-  animation: l2 1s infinite alternate;
-}
-@keyframes l2 {
-  0%,25% {
-    background-size: 8px 0,8px 4px,8px 4px,8px 0,8px 4px,8px 4px,8px 0,8px 4px,8px 4px;
-    background-position: 0 50%,0 calc(50% - 2px),0 calc(50% + 2px),50% 50%,50% calc(50% - 2px),50% calc(50% + 2px),100% 50%,100% calc(50% - 2px),100% calc(50% + 2px);
- }
- 50% {
-    background-size: 8px 100%,8px 4px,8px 4px,8px 0,8px 4px,8px 4px,8px 0,8px 4px,8px 4px;
-    background-position: 0 50%,0 calc(0% - 2px),0 calc(100% + 2px),50% 50%,50% calc(50% - 2px),50% calc(50% + 2px),100% 50%,100% calc(50% - 2px),100% calc(50% + 2px);
- }
- 75% {
-    background-size: 8px 100%,8px 4px,8px 4px,8px 100%,8px 4px,8px 4px,8px 0,8px 4px,8px 4px;
-    background-position: 0 50%,0 calc(0% - 2px),0 calc(100% + 2px),50% 50%,50% calc(0% - 2px),50% calc(100% + 2px),100% 50%,100% calc(50% - 2px),100% calc(50% + 2px);
- }
- 95%,100% {
-    background-size: 8px 100%,8px 4px, 8px 4px,8px 100%,8px 4px,8px 4px,8px 100%,8px 4px,8px 4px;
-    background-position: 0 50%,0 calc(0% - 2px),0 calc(100% + 2px),50% 50%,50% calc(0% - 2px),50% calc(100% + 2px),100% 50%,100% calc(0% - 2px),100% calc(100% + 2px);
- }
-}
-  
-  
+  .loaderSpin {
+    width: 50px;
+    padding: 8px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #25b09b;
+    --_m: conic-gradient(#0000 10%, #000), linear-gradient(#000 0 0) content-box;
+    -webkit-mask: var(--_m);
+    mask: var(--_m);
+    -webkit-mask-composite: source-out;
+    mask-composite: subtract;
+    animation: l3 1s infinite linear;
+  }
+  @keyframes l3 {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+  .absolute {
+  position: absolute;
 }
 
+.inline-block {
+  display: inline-block;
+}
 
+.loader2 {
+  display: flex;
+  margin: 0.25em 0;
+}
+
+.w-2 {
+  width: 0.5em;
+}
+
+.dash {
+  animation: dashArray 6s ease-in-out infinite,
+    dashOffset 2s linear infinite;
+}
+
+.spin {
+  animation: spinDashArray 6s ease-in-out infinite,
+    spin 8s ease-in-out infinite,
+    dashOffset 2s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes dashArray {
+  0% {
+    stroke-dasharray: 0 1 359 0;
+  }
+
+  50% {
+    stroke-dasharray: 0 359 1 0;
+  }
+
+  100% {
+    stroke-dasharray: 359 1 0 0;
+  }
+}
+
+@keyframes spinDashArray {
+  0% {
+    stroke-dasharray: 270 90;
+  }
+
+  50% {
+    stroke-dasharray: 0 360;
+  }
+
+  100% {
+    stroke-dasharray: 270 90;
+  }
+}
+
+@keyframes dashOffset {
+  0% {
+    stroke-dashoffset: 365;
+  }
+
+  100% {
+    stroke-dashoffset: 5;
+  }
+}
+
+@keyframes spin {
+  0% {
+    rotate: 0deg;
+  }
+
+  12.5%,
+  25% {
+    rotate: 270deg;
+  }
+
+  37.5%,
+  50% {
+    rotate: 540deg;
+  }
+
+  62.5%,
+  75% {
+    rotate: 810deg;
+  }
+
+  87.5%,
+  100% {
+    rotate: 1080deg;
+  }
+}
+
+}

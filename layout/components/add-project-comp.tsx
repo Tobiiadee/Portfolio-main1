@@ -1,7 +1,7 @@
 /** @format */
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,18 +29,34 @@ import { Textarea } from "@/modules/common/ui/textarea";
 import { Button } from "@/modules/common/ui/button";
 import AddImageComp from "./add-image-comp";
 import ServicesComp from "./services-comp";
-import useLocalStorage from "@/hooks/use-localStorage";
+import { RadioGroup, RadioGroupItem } from "@/modules/common/ui/radio-group";
+import useSendFirebaseProject from "@/hooks/use-sendFirebaseData";
+import { toast } from "sonner";
+import { generatePath } from "@/lib/helpers/helpers";
+import { useRouter } from "next/navigation";
+
 
 type ProjectType = z.infer<typeof ProjectSchema>;
 
-let initialValue = {
+// Define the initial values with correct types
+let initialValue: {
+  title: string;
+  subTitle: string;
+  url: string;
+  description: string;
+  industry: string;
+  client: string;
+  stage: "completed" | "ongoing";
+  services: string[];
+  date: Date;
+} = {
   title: "",
   subTitle: "",
   url: "",
   description: "",
-  thumbnailUrl: [""],
   industry: "",
   client: "",
+  stage: "completed", // This matches the enum type
   services: [""],
   date: new Date(),
 };
@@ -55,15 +71,24 @@ const servicesArray = [
   "Maintenance and Support",
 ];
 
-export default function AddProjectComp() {
-  //Initializing useLocalStorage for add project component
-  const [storedValue, setValue] = useLocalStorage("projectData", initialValue);
+const { generatedPath, uID } = generatePath("projects");
 
-  //Form data
-  const [data, setData] = useState(initialValue);
+export default function AddProjectComp() {
+  const { push } = useRouter();
+
+  //Send data to firebase
+  const { sendData, onSuccess, error, loading } =
+    useSendFirebaseProject(generatedPath);
 
   //Initializing state for services component
   const [pickService, setPickService] = useState<string[]>([]);
+
+  //Project thumbnail state
+  const [projectThumbnail, setProjectThumbnail] = useState<
+    string | ArrayBuffer | null
+  >(null);
+
+  // const projectId = uuidv4();
 
   // 1. Define your form.
   const form = useForm<ProjectType>({
@@ -71,23 +96,33 @@ export default function AddProjectComp() {
     defaultValues: initialValue,
   });
 
+  // const isValid = form.formState.isValid;
+
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof ProjectSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    // console.log(values);
-    const formData = { ...values, services: pickService };
-    setData(formData);
-    setValue(formData);
+    const formData = {
+      ...values,
+      id: uID,
+      services: pickService,
+      thumbnailUrl: projectThumbnail,
+    };
+    sendData(formData);
+    setPickService([]);
+    form.reset();
   }
 
-  useEffect(() => {
-    form.reset(storedValue);
-  }, [form, storedValue]);
+  if (onSuccess) {
+    toast.success("Project added successfully");
+    setTimeout(() => {
+      push("/projects");
+    }, 2000);
+  }
 
-  //Services component handlers and values
-  // Stored value for services component
-  // const serviceStoredData = storedValue.services;
+  if (error) {
+    toast.error("There was an error adding the project");
+  }
+
+  const { isValid } = form.formState;
 
   // Pick service handler
   const pickServiceHandler = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -107,6 +142,20 @@ export default function AddProjectComp() {
     const serviceId = e.currentTarget.textContent!;
     const newServices = pickService.filter((service) => service !== serviceId);
     setPickService(newServices);
+  };
+
+  //Handle Image upload
+  const imageUploadHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const readerFile = reader.readAsDataURL.toString();
+        // Set the base64 string as the state
+        setProjectThumbnail(reader.result?.toString()!);
+      };
+      reader.readAsDataURL(file); // Convert the file to base64 string
+    }
   };
 
   return (
@@ -231,6 +280,38 @@ export default function AddProjectComp() {
               )}
             />
           </div>
+
+          <div className='flex flex-col md:flex-row gap-2 md:gap-4 md:items-center my-4'>
+            <FormField
+              control={form.control}
+              name='stage'
+              render={({ field }) => (
+                <FormItem className='space-y-3'>
+                  <FormLabel>What stage is your project?</FormLabel>
+                  <FormControl>
+                    <RadioGroup
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                      className='flex items-center space-x-8'>
+                      <FormItem className='flex items-center space-x-3 space-y-0'>
+                        <FormControl>
+                          <RadioGroupItem value='completed' />
+                        </FormControl>
+                        <FormLabel className='font-normal'>Completed</FormLabel>
+                      </FormItem>
+                      <FormItem className='flex items-center space-x-3 space-y-0'>
+                        <FormControl>
+                          <RadioGroupItem value='ongoing' />
+                        </FormControl>
+                        <FormLabel className='font-normal'>Ongoing</FormLabel>
+                      </FormItem>
+                    </RadioGroup>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
           <div>
             <ServicesComp
               pickService={pickService}
@@ -260,11 +341,18 @@ export default function AddProjectComp() {
           </div>
 
           <div>
-            <AddImageComp />
+            <AddImageComp
+              imageUploadHandler={imageUploadHandler}
+              projectThumbnail={projectThumbnail}
+            />
           </div>
 
-          <Button type='submit' className='self-end'>
-            Submit
+          <Button
+            type='submit'
+            isLoading={loading}
+            disabled={!isValid}
+            className='self-end'>
+            Add Project
           </Button>
         </form>
       </Form>

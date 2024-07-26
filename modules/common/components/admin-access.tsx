@@ -2,8 +2,9 @@
 
 "use client";
 
-import React, { useState, useRef } from "react";
-// import ImgComp from "@/modules/common/components/img-comp";
+import React, { useState, useRef, useEffect } from "react";
+import { useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import {
   Menubar,
   MenubarContent,
@@ -13,16 +14,37 @@ import {
   MenubarShortcut,
   MenubarTrigger,
 } from "@/modules/common/ui/menubar";
-import { PlusIcon, ReaderIcon } from "@radix-ui/react-icons";
+import {
+  FaceIcon,
+  PersonIcon,
+  PlusIcon,
+  ReaderIcon,
+  Share1Icon,
+} from "@radix-ui/react-icons";
 import Image from "next/image";
-import profileImg from "../../../public/images/TPF.jpg";
+import profileImg from "../../../public/images/DUMMY_Profile-Image.png";
 import OnAlert from "./on-alert";
-import { UserLink } from "./user-link";
 import { useRouter } from "next/navigation";
+import ShareContent from "@/lib/helpers/share-content";
+import type { Session } from "next-auth";
+import { Text } from "./text";
+import { MessageCircleReply } from "lucide-react";
+
+export interface AuthSessionType {
+  session: Session | null;
+}
 
 const AdminAccess = () => {
-  const [admin, setAdmin] = useState(true);
+  const [session, setSession] = useState<Session | null>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    async function fetchSession() {
+      const authSession = await getSession();
+      setSession(authSession);
+    }
+    fetchSession();
+  }, []);
 
   const resetAdmin = () => {
     if (triggerRef.current) {
@@ -35,20 +57,15 @@ const AdminAccess = () => {
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger className='px-8 rounded-md bg-white text-black lg:px-4 transition duration-300'>
-            {admin ? "Admin" : "Client"}
+            {!session ? "Client" : "Admin"}
           </MenubarTrigger>
-          {admin ? (
-            <AdminMenu admin={admin} signOut={resetAdmin} />
-          ) : (
-            <NoAccess />
-          )}
+          {!session ? <NoAccess /> : <AdminMenu signOut={resetAdmin} />}
         </MenubarMenu>
       </Menubar>
 
       <OnAlert
         title='Are you sure you want to sign out?'
         triggerRef={triggerRef}
-        setState={setAdmin}
       />
     </>
   );
@@ -56,36 +73,47 @@ const AdminAccess = () => {
 
 export default AdminAccess;
 
-const AdminMenu = ({
-  admin,
-  signOut,
-}: {
-  admin: boolean;
-  signOut?: () => void;
-}) => {
+const AdminMenu = ({ signOut }: { signOut: () => void }) => {
   const { push } = useRouter();
+  const session = useSession();
+
+  const userEmail = session.data?.user?.email;
 
   return (
     <MenubarContent className='mt-1'>
-      <MenubarItem onClick={() => push("/profile")}>
-        {admin ? "Profile" : "Sign-in"}{" "}
-        <MenubarShortcut>
-          <AdminImage />
-        </MenubarShortcut>
+      <MenubarItem className='flex flex-col items-center gap-4'>
+        <AdminImage />
+        <Text variant={"p"}>{userEmail}</Text>
       </MenubarItem>
       <MenubarSeparator />
-      <MenubarItem onClick={() => push("/profile/add-project")}>
+      <MenubarItem
+        onClick={() => push("/add-project")}
+        className='cursor-pointer'>
         Add Project
         <MenubarShortcut>
           <PlusIcon />
         </MenubarShortcut>
       </MenubarItem>
       <MenubarSeparator />
-      <MenubarItem>Edit Contact</MenubarItem>
+      <MenubarItem
+        onClick={() => push("/contact-request")}
+        className='cursor-pointer'>
+        Contact Request
+        <MenubarShortcut>
+          <PersonIcon />
+        </MenubarShortcut>
+      </MenubarItem>
       <MenubarSeparator />
-      <MenubarItem>Share</MenubarItem>
+      <MenubarItem onClick={() => push("/feedback")} className='cursor-pointer'>
+        Feedbacks
+        <MenubarShortcut>
+          <FaceIcon />
+        </MenubarShortcut>
+      </MenubarItem>
       <MenubarSeparator />
-      <MenubarItem onClick={signOut}>Sign-out</MenubarItem>
+      <MenubarItem onClick={() => signOut()} className='cursor-pointer'>
+        Sign-out
+      </MenubarItem>
     </MenubarContent>
   );
 };
@@ -95,30 +123,51 @@ const NoAccess = () => {
 
   return (
     <MenubarContent className='mt-1'>
-      <MenubarItem onClick={() => push("/sign-in")}>Sign-in</MenubarItem>
+      <MenubarItem onClick={() => push("/sign-in")} className='cursor-pointer'>
+        Sign-in
+      </MenubarItem>
       <MenubarSeparator />
-      <MenubarItem onClick={() => push("/blog")}>Checkout our Blog</MenubarItem>
+      <MenubarItem onClick={() => push("/blog")} className='cursor-pointer'>
+        Checkout our Blog
+      </MenubarItem>
       <MenubarSeparator />
-      <MenubarItem onClick={() => push("/#feedback")}>
+      <MenubarItem
+        onClick={() => push("/#feedback")}
+        className='cursor-pointer'>
         Drop a feedback
         <MenubarShortcut>
           <ReaderIcon />
         </MenubarShortcut>
       </MenubarItem>
       <MenubarSeparator />
-      <MenubarItem onClick={() => push("/help")}>Help</MenubarItem>
+      <MenubarItem
+        onClick={() => ShareContent("portfolio-content")}
+        className='cursor-pointer'>
+        Share
+        <MenubarShortcut>
+          <Share1Icon />
+        </MenubarShortcut>
+      </MenubarItem>
+      <MenubarSeparator />
+      <MenubarItem onClick={() => push("/help")} className='cursor-pointer'>
+        Help
+      </MenubarItem>
     </MenubarContent>
   );
 };
 
 export const AdminImage = () => {
+  const session = useSession();
+
+  const userImage = session.data?.user?.image;
+
   return (
-    <div className='w-8 h-8 rounded-full overflow-hidden flex items-center justify-center'>
+    <div className='self-center w-20 h-20 rounded-full flex items-center justify-center overflow-hidden'>
       <Image
-        src={profileImg}
+        src={userImage || profileImg}
         alt='admin profile image'
-        width={25}
-        height={25}
+        width={80}
+        height={80}
       />
     </div>
   );
