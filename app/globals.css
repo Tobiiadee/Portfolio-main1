@@ -8,310 +8,308 @@
 
 html {
   scroll-behavior: smooth;
-html {
-  scroll-behavior: smooth;
 }
 
 @layer base {
-@layer base {
-  :root {
-    --font-serif: "Playfair Display Variable", serif;
-    --font-sans: "Open Sauce Sans", sans-serif;
+  @layer base {
+    :root {
+      --font-serif: "Playfair Display Variable", serif;
+      --font-sans: "Open Sauce Sans", sans-serif;
 
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+      --background: 0 0% 100%;
+      --foreground: 222.2 84% 4.9%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+      --card: 0 0% 100%;
+      --card-foreground: 222.2 84% 4.9%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+      --popover: 0 0% 100%;
+      --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+      --primary: 222.2 47.4% 11.2%;
+      --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+      --secondary: 210 40% 96.1%;
+      --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+      --muted: 210 40% 96.1%;
+      --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+      --accent: 210 40% 96.1%;
+      --accent-foreground: 222.2 47.4% 11.2%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+      --border: 214.3 31.8% 91.4%;
+      --input: 214.3 31.8% 91.4%;
+      --ring: 222.2 84% 4.9%;
 
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 0 0% 3%;
-    --foreground: 210 40% 98%;
-
-    --card: 0 0% 3%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 0 0% 4%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 204, 3%, 20%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 204, 3%, 49%;
-    --input: 204, 3%, 49%;
-    --ring: 212.7 26.8% 83.9%;
-    --font-serif: "Playfair Display Variable", serif;
-    --font-sans: "Open Sauce Sans", sans-serif;
-
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 0 0% 3%;
-    --foreground: 210 40% 98%;
-
-    --card: 0 0% 3%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 0 0% 4%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 204, 3%, 20%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 204, 3%, 49%;
-    --input: 204, 3%, 49%;
-    --ring: 212.7 26.8% 83.9%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-
-  .link-hover {
-    @apply after:absolute after:left-0 after:bottom-0 after:block after:h-[1px] after:w-0 hover:after:w-full group-hover:after:w-full after:bg-primary/80 after:transition-all;
-  }
-
-  .link-active {
-    @apply after:absolute after:left-0 after:bottom-0 after:block after:h-[1px] after:w-full after:bg-primary/80 after:transition-all;
-  }
-
-  .loader {
-    @apply w-10 aspect-square;
-    --c: linear-gradient(currentColor 0 0);
-    --r1: radial-gradient(farthest-side at bottom, currentColor 93%, #0000);
-    --r2: radial-gradient(farthest-side at top, currentColor 93%, #0000);
-    background: var(--c), var(--r1), var(--r2), var(--c), var(--r1), var(--r2),
-      var(--c), var(--r1), var(--r2);
-    background-repeat: no-repeat;
-    animation: l2 1s infinite alternate;
-  }
-  @keyframes l2 {
-    0%,
-    25% {
-      background-size: 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px, 8px 0,
-        8px 4px, 8px 4px;
-      background-position: 0 50%, 0 calc(50% - 2px), 0 calc(50% + 2px), 50% 50%,
-        50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px),
-        100% calc(50% + 2px);
+      --radius: 0.5rem;
     }
-    50% {
-      background-size: 8px 100%, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px,
-        8px 0, 8px 4px, 8px 4px;
-      background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%,
-        50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px),
-        100% calc(50% + 2px);
+
+    .dark {
+      --background: 0 0% 3%;
+      --foreground: 210 40% 98%;
+
+      --card: 0 0% 3%;
+      --card-foreground: 210 40% 98%;
+
+      --popover: 0 0% 4%;
+      --popover-foreground: 210 40% 98%;
+
+      --primary: 210 40% 98%;
+      --primary-foreground: 222.2 47.4% 11.2%;
+
+      --secondary: 217.2 32.6% 17.5%;
+      --secondary-foreground: 210 40% 98%;
+
+      --muted: 217.2 32.6% 17.5%;
+      --muted-foreground: 215 20.2% 65.1%;
+
+      --accent: 204, 3%, 20%;
+      --accent-foreground: 210 40% 98%;
+
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 210 40% 98%;
+
+      --border: 204, 3%, 49%;
+      --input: 204, 3%, 49%;
+      --ring: 212.7 26.8% 83.9%;
+      --font-serif: "Playfair Display Variable", serif;
+      --font-sans: "Open Sauce Sans", sans-serif;
+
+      --background: 0 0% 100%;
+      --foreground: 222.2 84% 4.9%;
+
+      --card: 0 0% 100%;
+      --card-foreground: 222.2 84% 4.9%;
+
+      --popover: 0 0% 100%;
+      --popover-foreground: 222.2 84% 4.9%;
+
+      --primary: 222.2 47.4% 11.2%;
+      --primary-foreground: 210 40% 98%;
+
+      --secondary: 210 40% 96.1%;
+      --secondary-foreground: 222.2 47.4% 11.2%;
+
+      --muted: 210 40% 96.1%;
+      --muted-foreground: 215.4 16.3% 46.9%;
+
+      --accent: 210 40% 96.1%;
+      --accent-foreground: 222.2 47.4% 11.2%;
+
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 210 40% 98%;
+
+      --border: 214.3 31.8% 91.4%;
+      --input: 214.3 31.8% 91.4%;
+      --ring: 222.2 84% 4.9%;
+
+      --radius: 0.5rem;
     }
-    75% {
-      background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px,
-        8px 0, 8px 4px, 8px 4px;
-      background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%,
-        50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(50% - 2px),
-        100% calc(50% + 2px);
-    }
-    95%,
-    100% {
-      background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px,
-        8px 100%, 8px 4px, 8px 4px;
-      background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%,
-        50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(0% - 2px),
-        100% calc(100% + 2px);
+
+    .dark {
+      --background: 0 0% 3%;
+      --foreground: 210 40% 98%;
+
+      --card: 0 0% 3%;
+      --card-foreground: 210 40% 98%;
+
+      --popover: 0 0% 4%;
+      --popover-foreground: 210 40% 98%;
+
+      --primary: 210 40% 98%;
+      --primary-foreground: 222.2 47.4% 11.2%;
+
+      --secondary: 217.2 32.6% 17.5%;
+      --secondary-foreground: 210 40% 98%;
+
+      --muted: 217.2 32.6% 17.5%;
+      --muted-foreground: 215 20.2% 65.1%;
+
+      --accent: 204, 3%, 20%;
+      --accent-foreground: 210 40% 98%;
+
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 210 40% 98%;
+
+      --border: 204, 3%, 49%;
+      --input: 204, 3%, 49%;
+      --ring: 212.7 26.8% 83.9%;
     }
   }
 
-  /* HTML: <div class="loader"></div> */
-  .loaderSpin {
-    width: 50px;
-    padding: 8px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: #25b09b;
-    --_m: conic-gradient(#0000 10%, #000), linear-gradient(#000 0 0) content-box;
-    -webkit-mask: var(--_m);
-    mask: var(--_m);
-    -webkit-mask-composite: source-out;
-    mask-composite: subtract;
-    animation: l3 1s infinite linear;
-  }
-  @keyframes l3 {
-    to {
-      transform: rotate(1turn);
+  @layer base {
+    * {
+      @apply border-border;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
+
+    .link-hover {
+      @apply after:absolute after:left-0 after:bottom-0 after:block after:h-[1px] after:w-0 hover:after:w-full group-hover:after:w-full after:bg-primary/80 after:transition-all;
+    }
+
+    .link-active {
+      @apply after:absolute after:left-0 after:bottom-0 after:block after:h-[1px] after:w-full after:bg-primary/80 after:transition-all;
+    }
+
+    .loader {
+      @apply w-10 aspect-square;
+      --c: linear-gradient(currentColor 0 0);
+      --r1: radial-gradient(farthest-side at bottom, currentColor 93%, #0000);
+      --r2: radial-gradient(farthest-side at top, currentColor 93%, #0000);
+      background: var(--c), var(--r1), var(--r2), var(--c), var(--r1), var(--r2),
+        var(--c), var(--r1), var(--r2);
+      background-repeat: no-repeat;
+      animation: l2 1s infinite alternate;
+    }
+    @keyframes l2 {
+      0%,
+      25% {
+        background-size: 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px, 8px 0,
+          8px 4px, 8px 4px;
+        background-position: 0 50%, 0 calc(50% - 2px), 0 calc(50% + 2px),
+          50% 50%, 50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%,
+          100% calc(50% - 2px), 100% calc(50% + 2px);
+      }
+      50% {
+        background-size: 8px 100%, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px,
+          8px 0, 8px 4px, 8px 4px;
+        background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px),
+          50% 50%, 50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%,
+          100% calc(50% - 2px), 100% calc(50% + 2px);
+      }
+      75% {
+        background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px,
+          8px 0, 8px 4px, 8px 4px;
+        background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px),
+          50% 50%, 50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%,
+          100% calc(50% - 2px), 100% calc(50% + 2px);
+      }
+      95%,
+      100% {
+        background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px,
+          8px 100%, 8px 4px, 8px 4px;
+        background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px),
+          50% 50%, 50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%,
+          100% calc(0% - 2px), 100% calc(100% + 2px);
+      }
+    }
+
+    /* HTML: <div class="loader"></div> */
+    .loaderSpin {
+      width: 50px;
+      padding: 8px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #25b09b;
+      --_m: conic-gradient(#0000 10%, #000),
+        linear-gradient(#000 0 0) content-box;
+      -webkit-mask: var(--_m);
+      mask: var(--_m);
+      -webkit-mask-composite: source-out;
+      mask-composite: subtract;
+      animation: l3 1s infinite linear;
+    }
+    @keyframes l3 {
+      to {
+        transform: rotate(1turn);
+      }
+    }
+
+    .absolute {
+      position: absolute;
+    }
+
+    .inline-block {
+      display: inline-block;
+    }
+
+    .loader2 {
+      display: flex;
+      margin: 0.25em 0;
+    }
+
+    .w-2 {
+      width: 0.5em;
+    }
+
+    .dash {
+      animation: dashArray 6s ease-in-out infinite,
+        dashOffset 2s linear infinite;
+    }
+
+    .spin {
+      animation: spinDashArray 6s ease-in-out infinite,
+        spin 8s ease-in-out infinite, dashOffset 2s linear infinite;
+      transform-origin: center;
+    }
+
+    @keyframes dashArray {
+      0% {
+        stroke-dasharray: 0 1 359 0;
+      }
+
+      50% {
+        stroke-dasharray: 0 359 1 0;
+      }
+
+      100% {
+        stroke-dasharray: 359 1 0 0;
+      }
+    }
+
+    @keyframes spinDashArray {
+      0% {
+        stroke-dasharray: 270 90;
+      }
+
+      50% {
+        stroke-dasharray: 0 360;
+      }
+
+      100% {
+        stroke-dasharray: 270 90;
+      }
+    }
+
+    @keyframes dashOffset {
+      0% {
+        stroke-dashoffset: 365;
+      }
+
+      100% {
+        stroke-dashoffset: 5;
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        rotate: 0deg;
+      }
+
+      12.5%,
+      25% {
+        rotate: 270deg;
+      }
+
+      37.5%,
+      50% {
+        rotate: 540deg;
+      }
+
+      62.5%,
+      75% {
+        rotate: 810deg;
+      }
+
+      87.5%,
+      100% {
+        rotate: 1080deg;
+      }
     }
   }
-
-  .absolute {
-  position: absolute;
-}
-
-.inline-block {
-  display: inline-block;
-}
-
-.loader2 {
-  display: flex;
-  margin: 0.25em 0;
-}
-
-.w-2 {
-  width: 0.5em;
-}
-
-.dash {
-  animation: dashArray 6s ease-in-out infinite,
-    dashOffset 2s linear infinite;
-}
-
-.spin {
-  animation: spinDashArray 6s ease-in-out infinite,
-    spin 8s ease-in-out infinite,
-    dashOffset 2s linear infinite;
-  transform-origin: center;
-}
-
-@keyframes dashArray {
-  0% {
-    stroke-dasharray: 0 1 359 0;
-  }
-
-  50% {
-    stroke-dasharray: 0 359 1 0;
-  }
-
-  100% {
-    stroke-dasharray: 359 1 0 0;
-  }
-}
-
-@keyframes spinDashArray {
-  0% {
-    stroke-dasharray: 270 90;
-  }
-
-  50% {
-    stroke-dasharray: 0 360;
-  }
-
-  100% {
-    stroke-dasharray: 270 90;
-  }
-}
-
-@keyframes dashOffset {
-  0% {
-    stroke-dashoffset: 365;
-  }
-
-  100% {
-    stroke-dashoffset: 5;
-  }
-}
-
-@keyframes spin {
-  0% {
-    rotate: 0deg;
-  }
-
-  12.5%,
-  25% {
-    rotate: 270deg;
-  }
-
-  37.5%,
-  50% {
-    rotate: 540deg;
-  }
-
-  62.5%,
-  75% {
-    rotate: 810deg;
-  }
-
-  87.5%,
-  100% {
-    rotate: 1080deg;
-  }
-}
-
 }

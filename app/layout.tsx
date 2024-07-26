@@ -6,7 +6,6 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/modules/common/components/theme-provider";
 import "@fontsource-variable/playfair-display";
 import "@fontsource/open-sauce-sans";
-import { ThemeProvider } from "@/modules/common/components/theme-provider";
 import "@fontsource-variable/playfair-display";
 import "@fontsource/open-sauce-sans";
 import "./globals.css";
