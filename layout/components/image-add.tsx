@@ -20,6 +20,11 @@ export default function ImageAdd({
   imageUploadHandler,
   imageKey,
 }: AddImageType) {
+
+  const image = `${projectThumbnail}`
+
+  // console.log(projectThumbnail);
+  
   return (
     <div>
       <div>
@@ -33,7 +38,7 @@ export default function ImageAdd({
             </div>
             {projectThumbnail && (
               <Image
-                src={projectThumbnail}
+                src={image}
                 fill
                 sizes='(max-width: 768px) 100vw, 33vw'
                 className='object-cover'
