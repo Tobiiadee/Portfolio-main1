@@ -125,6 +125,7 @@ export default function SignInComp() {
                         <FormLabel>Email</FormLabel>
                         <FormControl>
                           <Input
+                            type='email'
                             placeholder='Enter your email'
                             {...field}
                             className='w-full'

@@ -18,8 +18,9 @@ import { getServerSession } from "next-auth";
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Tobi Ade | personal portfolio",
-  description: "tobi is a frontend web developer willing to offer the best services",
+  title: "Tobi Ade | Personal Portfolio",
+  description:
+    "Explore Tobi Ade's portfolio showcasing innovative web development and design projects. Specializing in modern technologies such as React, Next.js, and Firebase, I deliver high-quality, user-centric solutions tailored to your needs. View my work and contact me to discuss how we can bring your project to life.",
 };
 
 export default async function RootLayout({
@@ -31,7 +32,7 @@ export default async function RootLayout({
 
   return (
     <html lang='en'>
-     <head/>
+      <head />
       <body>
         <ThemeProvider
           attribute='class'
