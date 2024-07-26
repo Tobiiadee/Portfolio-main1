@@ -1,6 +1,11 @@
 /** @format */
 
+/** @format */
+
 import type { Metadata } from "next";
+import { ThemeProvider } from "@/modules/common/components/theme-provider";
+import "@fontsource-variable/playfair-display";
+import "@fontsource/open-sauce-sans";
 import { ThemeProvider } from "@/modules/common/components/theme-provider";
 import "@fontsource-variable/playfair-display";
 import "@fontsource/open-sauce-sans";
@@ -10,6 +15,7 @@ import SessionProvider from "@/modules/common/components/session-provider";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 
+// const inter = Inter({ subsets: ["latin"] });
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
