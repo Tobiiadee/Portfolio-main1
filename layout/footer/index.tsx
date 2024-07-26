@@ -16,7 +16,6 @@ export default function Footer() {
         </Text>
 
         <div className='mt-10'>
-          {" "}
           <Link href={"/contact"}>
             <Button>Get In Touch</Button>
           </Link>
@@ -34,16 +33,16 @@ export default function Footer() {
 function FooterLinks() {
   return (
     <div className='flex flex-col gap-2 w-max'>
-      <Link href='/projects' className="relative link-hover">
+      <Link href='/projects' className='relative link-hover'>
         <Text variant={"h5"}>Work</Text>
       </Link>
-      <Link href='/about' className="relative link-hover">
+      <Link href='/about' className='relative link-hover'>
         <Text variant={"h5"}>About</Text>
       </Link>
-      <Link href='/contact' className="relative link-hover">
+      <Link href='/contact' className='relative link-hover'>
         <Text variant={"h5"}>Contact</Text>
       </Link>
-      <Link href='/blog' target='blank' className="relative link-hover">
+      <Link href='/blog' target='blank' className='relative link-hover'>
         <Text variant={"h5"}>Blog</Text>
       </Link>
     </div>

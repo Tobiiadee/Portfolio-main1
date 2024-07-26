@@ -62,7 +62,7 @@ export function ClientEmailTemplate(clientName: string) {
           <p>Best regards,</p>
           <p>Tobi Ade</p>
   
-          <footer>&copy; 2024 tobi.wdev. All rights reserved.</footer>
+          <footer>&copy; 2024 @tobi.wdev. All rights reserved.</footer>
         </div>
       </body>
       </html>
@@ -130,7 +130,7 @@ export function ContactRequestEmailTemplate(message: string) {
           <p>Best regards,</p>
           <p>Tobi Ade</p>
   
-          <footer>&copy; 2024 tobi.wdev. All rights reserved.</footer>
+          <footer>&copy; 2024 @tobi.wdev. All rights reserved.</footer>
         </div>
       </body>
       </html>
@@ -193,7 +193,7 @@ export function AdminEmailTemplate(
           <p>${message}</p>
 
           <p>You can contact ${clientName} through: ${address}</p>
-          <footer>&copy; 2024 tobi.wdev. All rights reserved.</footer>
+          <footer>&copy; 2024 @tobi.wdev. All rights reserved.</footer>
         </div>
       </body>
       </html>
@@ -249,7 +249,7 @@ export function FeedbackEmailTemplate(message: string) {
 
           <p>${message}</p>
 
-          <footer>&copy; 2024 tobi.wdev. All rights reserved.</footer>
+          <footer>&copy; 2024 @tobi.wdev. All rights reserved.</footer>
         </div>
       </body>
       </html>

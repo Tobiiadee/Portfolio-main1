@@ -67,8 +67,8 @@ const HeaderText: React.FC = () => {
         xmlns='http://www.w3.org/2000/svg'
         fill='none'
         viewBox='0 0 64 64'
-        height='44'
-        width='44'
+        height='32'
+        width='32'
         className='inline-block'>
         <path
           strokeLinejoin='round'
@@ -88,8 +88,8 @@ const HeaderText: React.FC = () => {
         xmlns='http://www.w3.org/2000/svg'
         fill='none'
         viewBox='0 0 64 64'
-        height='44'
-        width='44'
+        height='32'
+        width='32'
         className='inline-block'
         style={
           {

@@ -43,7 +43,7 @@ export default function Header() {
           href={"/"}
           className='flex flex-col justify-center items-center space-x-1'>
           <HeaderText />
-          {/* <Text className='text-[12px]'>tobi.wdev</Text> */}
+          <Text className='text-[12px] mr-2'>@tobi.wdev</Text>
         </Link>
         <div className='flex justify-between space-x-20 items-center'>
           <Navigation />

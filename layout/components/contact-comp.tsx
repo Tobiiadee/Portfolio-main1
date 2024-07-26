@@ -108,7 +108,7 @@ export const SocialContact = () => {
         </div>
       </Link>
 
-      <Link target="blank" href={""}>
+      <Link target="blank" href={"https://github.com/tobiiadee"}>
         <div className='border rounded-md flex items-center justify-center p-2 group'>
           <GitHubLogoIcon className='w-6 h-5 group-hover:scale-110 transition duration-300' />
         </div>
