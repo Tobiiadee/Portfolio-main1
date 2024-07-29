@@ -28,7 +28,6 @@ import { useRouter } from "next/navigation";
 import ShareContent from "@/lib/helpers/share-content";
 import type { Session } from "next-auth";
 import { Text } from "./text";
-import { MessageCircleReply } from "lucide-react";
 
 export interface AuthSessionType {
   session: Session | null;
@@ -57,7 +56,7 @@ const AdminAccess = () => {
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger className='px-8 rounded-md bg-white text-black lg:px-4 transition duration-300'>
-            {!session ? "Client" : "Admin"}
+            {!session ? "Menu" : "Admin"}
           </MenubarTrigger>
           {!session ? <NoAccess /> : <AdminMenu signOut={resetAdmin} />}
         </MenubarMenu>
