@@ -199,7 +199,7 @@ export function AdminEmailTemplate(
       </html>
     `;
 }
-export function FeedbackEmailTemplate(message: string) {
+export function FeedbackEmailTemplate(message: string, address: string) {
   return `
       <!DOCTYPE html>
       <html lang="en">
@@ -245,7 +245,7 @@ export function FeedbackEmailTemplate(message: string) {
       </head>
       <body>
         <div class="container">
-          <h2>You've got a new feedback!</h2>   
+          <h2>You've got a new feedback <from: ${address}></h2>   
 
           <p>${message}</p>
 

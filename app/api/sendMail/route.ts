@@ -66,7 +66,7 @@ export async function POST(req: NextRequest) {
       to: process.env.MAIL_USER,
       subject: `Portfolio- Feedback from: ${address}`,
       text: message,
-      html: FeedbackEmailTemplate(address),
+      html: FeedbackEmailTemplate(message, address),
     };
 
     const contactRequest = {
