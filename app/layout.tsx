@@ -1,7 +1,5 @@
 /** @format */
 
-/** @format */
-
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/modules/common/components/theme-provider";
 import "@fontsource-variable/playfair-display";
@@ -9,10 +7,10 @@ import "@fontsource/open-sauce-sans";
 import "@fontsource-variable/playfair-display";
 import "@fontsource/open-sauce-sans";
 import "./globals.css";
-import { Toaster } from "@/modules/common/ui/sonner";
 import SessionProvider from "@/modules/common/components/session-provider";
 import { authOptions } from "@/lib/utils/auth-options";
 import { getServerSession } from "next-auth";
+import ClientThemeProvider from "@/modules/common/components/client-theme-provider";
 
 // const inter = Inter({ subsets: ["latin"] });
 // const inter = Inter({ subsets: ["latin"] });
@@ -38,10 +36,13 @@ export default async function RootLayout({
           property='og:description'
           content='Check out my projects and skills on my portfolio website.'
         />
-        <meta property='og:image' content='/public/images/TPF.jpeg' />
+        <meta
+          property='og:image'
+          content='https://portfolio10-git-main-tobi-ades-projects.vercel.app/images/TPF.jpeg'
+        />
         <meta
           property='og:url'
-          content='https://portfolio10-poewjd4wv-tobi-ades-projects.vercel.app'
+          content='https://portfolio10-git-main-tobi-ades-projects.vercel.app'
         />
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='twitter:creator' content='@TobiWdev' />
@@ -50,16 +51,9 @@ export default async function RootLayout({
         <meta property='fb:app_id' content='1690689051685715' />
       </head>
       <body>
-        <ThemeProvider
-          attribute='class'
-          defaultTheme='light'
-          enableSystem
-          disableTransitionOnChange>
-          <SessionProvider session={session}>
-            <div>{children}</div>
-          </SessionProvider>
-          <Toaster />
-        </ThemeProvider>
+        <SessionProvider session={session}>
+          <ClientThemeProvider>{children}</ClientThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );

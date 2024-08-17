@@ -35,6 +35,8 @@
     "framer-motion": "^11.2.10",
     "git-filter-repo": "^0.0.30",
     "googleapis": "^140.0.1",
+    "lenis": "^1.1.9",
+    "loadash": "^1.0.0",
     "lucide-react": "^0.395.0",
     "net": "^1.0.2",
     "next": "14.2.3",

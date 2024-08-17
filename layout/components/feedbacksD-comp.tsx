@@ -48,13 +48,13 @@ export default function FeedbacksDComp() {
       )}
 
       {loading && (
-        <div className='grid grid-cols-2 gap-6 w-full overflow-hidden'>
+        <div className='grid md:grid-cols-2 gap-6 w-full overflow-hidden'>
           {Array.from({ length: 6 }).map((_, i) => (
             <ProjectSekeletonCard key={i} />
           ))}
         </div>
       )}
-      <div className='grid grid-cols-2 gap-6 overflow-hidden'>
+      <div className='grid md:grid-cols-2 gap-6 overflow-hidden'>
         <AnimatePresence>
           {feedbacks.map((feedback, i) => (
             <motion.div

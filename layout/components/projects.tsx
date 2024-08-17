@@ -45,7 +45,7 @@ export default function Projects() {
       }}
       viewport={{ once: true }}
       className='grid grid-cols-2 gap-6'>
-      <div className='self-start col-span-2 md:col-span-1 flex justify-between md:justify-normal md:flex-col h-full'>
+      <div className='self-start col-span-2 md:col-span-1 flex justify-between md:justify-normal md:flex-col gap-16 h-full'>
         <div className='flex items-start gap-6'>
           <DotFilledIcon className='w-4 h-4 hidden md:block' />
           <div className='flex flex-col gap-1 md:gap-1.5'>

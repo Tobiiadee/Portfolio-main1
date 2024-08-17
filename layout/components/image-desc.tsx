@@ -7,10 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import useGetFirebaseData from "@/hooks/use-getFirebaseData";
 import { getAllKeys } from "@/lib/helpers/helpers";
-import LoadingSpinner from "@/modules/common/components/loading-spinner";
-import { UserLink } from "@/modules/common/components/user-link";
-import { Text } from "@/modules/common/components/text";
 import { OpenInNewWindowIcon } from "@radix-ui/react-icons";
+import LoadingSvg from "@/modules/common/components/loading-svg";
 
 const ImageDesc = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -51,7 +49,7 @@ const ImageDesc = () => {
           className='w-full h-full overflow-hidden absolute top-0 left-0'>
           {loading && (
             <div className='w-full h-full flex items-center justify-center'>
-              <LoadingSpinner size={50} />
+              <LoadingSvg />
             </div>
           )}
           {!loading && projectThumbnail.length > 0 && (

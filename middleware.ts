@@ -11,7 +11,7 @@ export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // List of paths that require authentication
-  const protectedPaths = ["/add-project", "/contact-request"];
+  const protectedPaths = ["/add-project", "/contact-request", "/feedback"];
 
   // Check if the path requires authentication and if the user is not authenticated
   if (protectedPaths.some((path) => pathname.startsWith(path)) && !token) {
@@ -31,5 +31,5 @@ interface Config {
 }
 
 export const config: Config = {
-  matcher: ["/add-project", "/contact-request"], // Define paths to be protected
+  matcher: ["/add-project", "/contact-request", "/feedback"], // Define paths to be protected
 };

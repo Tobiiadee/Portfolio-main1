@@ -37,22 +37,23 @@ import { toast } from "sonner";
 
 import { signIn } from "next-auth/react";
 import { ExitIcon } from "@radix-ui/react-icons";
+import HeaderText from "@/modules/common/ui/header-text";
+import Link from "next/link";
+import LoadingSvg from "@/modules/common/components/loading-svg";
+import useLocalStorage from "@/hooks/use-localStorage";
 
 type SignInType = z.infer<typeof SignInSchema>;
 
 export default function SignInComp() {
   const session = useSession();
 
+  const [storeValue, setValue] = useLocalStorage<SignInType>("pSign", {
+    email: "",
+    password: "",
+  });
+
   // Keep me signed in state
   const [isChecked, setIsChecked] = useState(false);
-
-  //Sign in data
-  const [signInData, setSignInData] = useState<SignInType>();
-
-  const email = signInData?.email;
-  const password = signInData?.password;
-
-  const { push } = useRouter();
 
   // 1. Define your form.
   const form = useForm<SignInType>({
@@ -63,6 +64,13 @@ export default function SignInComp() {
     },
   });
 
+  useEffect(() => {
+    form.reset({
+      email: storeValue.email,
+      password: storeValue.password,
+    });
+  }, [storeValue, form]); // Reset form when signInData changes
+
   const { isValid, isSubmitting, isSubmitSuccessful } = form.formState;
 
   async function onSubmit(values: z.infer<typeof SignInSchema>) {
@@ -72,30 +80,26 @@ export default function SignInComp() {
       redirect: true,
       callbackUrl: "/",
     });
-    setSignInData(values);
-  }
 
-  useEffect(() => {
-    if (isSubmitting) {
-      toast.success("Signing in...");
+    const signInData = {
+      email: values.email,
+      password: values.password,
+    };
+
+    if (isChecked) {
+      setValue(signInData);
     }
-  }, [isSubmitting]);
-
-  // useEffect(() => {
-  //   if (isSubmitSuccessful) {
-  //     toast.success("Signed In");
-  //   }
-  // }, [isSubmitSuccessful]);
+  }
 
   return (
     <div className='relative'>
       <div className='absolute top-4 left-0 md:right-16 px-4 flex items-center justify-between w-full'>
-        <Button
-          variant={"link"}
-          onClick={() => push("/")}
-          className='border active:border-foreground rounded-md'>
-          <ExitIcon className='h-4 w-4' />
-        </Button>
+        <Link
+          href={"/"}
+          className='flex flex-col justify-center items-center space-x-1'>
+          <HeaderText />
+          <Text className='text-[12px] mr-2'>@tobi.wdev</Text>
+        </Link>
 
         <ToggleTheme />
       </div>
@@ -104,7 +108,7 @@ export default function SignInComp() {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.2 }}
-          className='w-max h-max'>
+          className='w-max h-max mt-16 md:mt-0'>
           <Card className='w-dvw md:w-[27rem] -mt-28 md:mt-0 border-none shadow-none md:shadow-md md:border-2 mx-auto md:px-8 pt-2 pb-6'>
             <CardHeader>
               <CardTitle className='text-center'>Welcome Back</CardTitle>
@@ -156,16 +160,19 @@ export default function SignInComp() {
                   <div className='flex gap-2 items-center'>
                     <Checkbox
                       id='keep_me_signed_in'
+                      checked={storeValue ? true : false}
                       onClick={() => setIsChecked((prev) => !prev)}
                     />
                     <label htmlFor='keep_me_signed_in'>
                       <Text variant={"p"}>Keep me signed in</Text>
                     </label>
                   </div>
-                  <SignInButton
-                    isFormValid={isValid}
-                    isLoading={isSubmitting}
-                  />
+                  <div className='flex space-x-6'>
+                    <SignInButton
+                      isFormValid={isValid}
+                      isLoading={isSubmitSuccessful}
+                    />
+                  </div>
                 </form>
               </Form>
               <GoogleButton />
@@ -191,7 +198,7 @@ const SignInButton = ({
       isLoading={isLoading}
       variant={"default"}
       className='w-full'>
-      Sign In
+      {isLoading ? "Signing In..." : "Sign In"}
     </Button>
   );
 };
@@ -207,7 +214,7 @@ const GoogleButton = () => {
       <div className='flex items-center justify-center gap-2 mt-4 overflow-hidden w-full'>
         <Separator className='w-32' />
         <Text variant={"h5"} className='text-gray-600'>
-          Or
+          or
         </Text>
         <Separator className='w-32' />
       </div>

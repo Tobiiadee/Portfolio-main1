@@ -114,7 +114,7 @@ export const SocialContact = () => {
         </div>
       </Link>
 
-      <Link target="blank" href={""}>
+      <Link target="blank" href={"https://linkedin.com/in/tobi-ade-0981831b9"}>
         <div className='border rounded-md flex items-center justify-center p-2 group'>
           <LinkedInLogoIcon className='w-6 h-5 group-hover:scale-110 transition duration-300' />
         </div>
