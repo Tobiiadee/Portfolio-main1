@@ -9,14 +9,21 @@ import React, { useEffect } from "react";
 import Lenis from "lenis";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    const lenis = new Lenis();
-    function raf(time: number) {
-      lenis.raf(time * 0.5);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-  });
+  // useEffect(() => {
+  //   const lenis = new Lenis();
+
+  //   function raf(time: number) {
+  //     lenis.raf(time);
+  //     requestAnimationFrame(raf);
+  //   }
+
+  //   requestAnimationFrame(raf);
+
+  //   return () => {
+  //     // Cleanup animation frame on component unmount
+  //     lenis.destroy(); // Clean up Lenis instance
+  //   };
+  // }, []);
 
   return (
     <div className='grid'>
