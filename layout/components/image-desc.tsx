@@ -9,6 +9,7 @@ import useGetFirebaseData from "@/hooks/use-getFirebaseData";
 import { getAllKeys } from "@/lib/helpers/helpers";
 import { OpenInNewWindowIcon } from "@radix-ui/react-icons";
 import LoadingSvg from "@/modules/common/components/loading-svg";
+import { BorderBeam } from "@/modules/common/ui/border-beam";
 
 const ImageDesc = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -38,7 +39,8 @@ const ImageDesc = () => {
       initial={{ x: 100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.7 }}
-      className='relative self-center md:self-start w-full md:w-[21rem] h-[24rem] rounded-md flex items-center lg:items-start overflow-hidden'>
+      className='relative self-center md:self-start w-full md:w-[21rem] h-[24rem] rounded-md flex justify-center items-center lg:items-start overflow-hidden'>
+      <BorderBeam className="z-30"/>
       <AnimatePresence initial={false}>
         <motion.div
           key={currentIndex}
@@ -46,7 +48,7 @@ const ImageDesc = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4 }}
-          className='w-full h-full overflow-hidden absolute top-0 left-0'>
+          className='w-full h-full overflow-hidden rounded-xl flex items-center justify-center absolute -z-20'>
           {loading && (
             <div className='w-full h-full flex items-center justify-center'>
               <LoadingSvg />

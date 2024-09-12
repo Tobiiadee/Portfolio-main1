@@ -12,7 +12,7 @@ export default function EmptyData({
 }) {
   return (
     <div className={`w-full flex items-center justify-center ${className}`}>
-      <Text variant={"h4"}>Sorry, there are no {module}</Text>
+      <Text variant={"h4"}>There are no {module}</Text>
     </div>
   );
 }

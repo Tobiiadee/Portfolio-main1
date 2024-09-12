@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/modules/common/ui/button";
 import DeleteProjectAlert from "../../modules/common/components/project-alert";
 import { useSession } from "next-auth/react";
+import { PenLine } from "lucide-react";
 
 type MainProjectCompType = {
   projectTitle: string;
@@ -77,8 +78,11 @@ export default function MainProjectComp({
           </motion.div>
         </div>
         {session.status === "authenticated" && (
-          <div className='absolute right-0 bottom-0 z-40'>
-            <Button variant={"ghost"} onClick={handleDelete} className=''>
+          <div className='absolute right-0 bottom-0 z-40 flex space-x-4 items-center'>
+            <Button onClick={() => push(`/edit-project/${projectId}`)} variant={"ghost"} className='py-0 px-2'>
+              <PenLine size={18} strokeWidth={1.5}/>
+            </Button>
+            <Button variant={"ghost"} onClick={handleDelete} className='py-0 px-2'>
               <TrashIcon />
             </Button>
           </div>
