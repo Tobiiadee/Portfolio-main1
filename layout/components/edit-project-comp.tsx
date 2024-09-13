@@ -80,6 +80,7 @@ export default function EditProjectComp({ data, thumbnail, id }: EditProjectProp
     client: string | undefined;
     stage: "completed" | "ongoing";
     services: string[];
+    date: Date | undefined
   } = {
     title: data.title,
     subTitle: data.subTitle,
@@ -89,6 +90,7 @@ export default function EditProjectComp({ data, thumbnail, id }: EditProjectProp
     client: data.client,
     stage: "completed", // This matches the enum type
     services: [""],
+    date: data.date
   };
 
   // 1. Define your form.

@@ -19,6 +19,14 @@ export default function EditProject() {
   const router = useRouter();
   // console.log(data);
 
+  const modifiedDate = data?.date as string;
+
+  const modifiedData = {
+    ...data,
+    date: new Date(modifiedDate),
+    stage: data?.stage as "ongoing" | "completed",
+  };
+
   return (
     <div className='flex flex-col gap-14'>
       <motion.div
@@ -30,7 +38,7 @@ export default function EditProject() {
           EDIT PROJECT
         </Text>
 
-        <Button onClick={() => router.back()}  variant={"outline"}>
+        <Button onClick={() => router.back()} variant={"outline"}>
           Cancel
         </Button>
       </motion.div>
@@ -45,7 +53,7 @@ export default function EditProject() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7 }}>
           <EditProjectComp
-            data={data}
+            data={modifiedData}
             thumbnail={data.thumbnailUrl}
             id={editProjectID as string}
           />
