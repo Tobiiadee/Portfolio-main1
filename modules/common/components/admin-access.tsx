@@ -15,6 +15,7 @@ import {
   MenubarTrigger,
 } from "@/modules/common/ui/menubar";
 import {
+  ColumnsIcon,
   FaceIcon,
   PersonIcon,
   PlusIcon,
@@ -28,6 +29,7 @@ import { useRouter } from "next/navigation";
 import ShareContent from "@/lib/helpers/share-content";
 import type { Session } from "next-auth";
 import { Text } from "./text";
+import { Button } from "../ui/button";
 
 export interface AuthSessionType {
   session: Session | null;
@@ -55,8 +57,8 @@ const AdminAccess = () => {
     <>
       <Menubar>
         <MenubarMenu>
-          <MenubarTrigger className='px-8 rounded-md bg-white text-black lg:px-4 transition duration-300'>
-            {!session ? "Menu" : "Admin"}
+          <MenubarTrigger className='focus:bg-transparent bg-transparent hover:bg-transparent data-[state=open]:bg-transparent'>
+            {!session ? <ColumnsIcon className='text-foreground' /> : "Admin"}
           </MenubarTrigger>
           {!session ? <NoAccess /> : <AdminMenu signOut={resetAdmin} />}
         </MenubarMenu>

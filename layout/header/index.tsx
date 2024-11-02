@@ -39,11 +39,18 @@ export default function Header() {
         scrolled ? "backdrop-blur-md" : ""
       }`}>
       <div className='container md:px-24 flex justify-between items-center'>
-        <Link
-          href={"/"}
-          className='flex flex-col justify-center items-center space-x-1'>
-          <HeaderText />
-          <Text className='text-[12px] mr-2'>@tobi.wdev</Text>
+        <Link href={"/"} className='flex items-center space-x-2'>
+          <div className='w-8 aspect-square relative grid place-items-center overflow-hidden'>
+            <Image
+              src='/images/briefcase.png'
+              alt='logo'
+              fill={true}
+              className='object-cover'
+            />
+          </div>
+          <Text variant={"p"} className=''>
+            tobi.wdev
+          </Text>
         </Link>
         <div className='flex justify-between space-x-20 items-center'>
           <Navigation />

@@ -39,7 +39,7 @@ const ImageDesc = () => {
       initial={{ x: 100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.7 }}
-      className='relative self-center md:self-start w-full md:w-[21rem] h-[24rem] rounded-md flex justify-center items-center lg:items-start overflow-hidden'>
+      className='relative self-center md:self-start w-full lg:w-[21rem] h-[24rem] sm:mb-10 rounded-md flex justify-center items-center lg:items-start overflow-hidden'>
       <BorderBeam className="z-30"/>
       <AnimatePresence initial={false}>
         <motion.div

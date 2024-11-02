@@ -16,7 +16,7 @@ import { motion } from "framer-motion";
 export default function Page() {
   return (
     <div className='relative grid gap-16 md:gap-0 md:mt-10'>
-      <div className='flex flex-col gap-14 lg:flex-row lg:h-screen lg:justify-between overflow-hidden'>
+      <div className='flex flex-col gap-14 lg:flex-row lg:h-screen 2xl:h-[70vh] lg:justify-between overflow-hidden'>
         <TitleDescription />
         <div className='border border-dotted lg:hidden'></div>
         <ImageDesc />
@@ -44,9 +44,9 @@ export default function Page() {
         <FeedBackComp />
       </div>
 
-      <div className='fixed right-6 bottom-8 hidden md:block'>
+      {/* <div className='fixed right-6 bottom-8 hidden md:block'>
         <TestimonialButton className='py-6' />
-      </div>
+      </div> */}
     </div>
   );
 }
